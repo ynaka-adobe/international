@@ -1,0 +1,44 @@
+{
+  "variantName": "carousel-thumbnails",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/",
+    "originPage": "International homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero-slider",
+    "imagePattern": "large",
+    "notes": "Full-width 16x9 slides with split headline (class name left, tagline right), slide count, EXPLORE button, image thumbnail navigation bottom-right."
+  },
+  "contentPattern": {
+    "structure": "per slide: image | heading + tagline + CTA link | optional thumbnail label (defaults to first word of heading)",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "product-line sliders with image thumbnail navigation",
+      "full-width image slides with headline, tagline and single CTA"
+    ],
+    "notSuitableFor": [
+      "single static hero banners",
+      "card carousels showing several items at once"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-16T00:00:00.000Z"
+  }
+}

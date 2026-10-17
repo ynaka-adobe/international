@@ -23,6 +23,71 @@ import {
 } from './target.js';
 
 /**
+ * Moves all the attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveAttributes(from, to, attributes) {
+  if (!attributes) {
+    // eslint-disable-next-line no-param-reassign
+    attributes = [...from.attributes].map(({ nodeName }) => nodeName);
+  }
+  attributes.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to?.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Move instrumentation attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveInstrumentation(from, to) {
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
+}
+
+/**
+ * Gives repeated CTA links (e.g. "EXPLORE") a unique accessible name by appending
+ * the item's heading as visually hidden text.
+ * @param {Element} scope the block element
+ * @param {string} itemSelector selector for each item (card, slide, row) inside scope
+ */
+export function disambiguateLinks(scope, itemSelector) {
+  scope.querySelectorAll(itemSelector).forEach((item) => {
+    const heading = item.querySelector('h1, h2, h3, h4, h5, h6');
+    const text = heading?.textContent.trim();
+    if (!text) return;
+    item.querySelectorAll('a.button, .button-container > a').forEach((a) => {
+      if (a.closest('h1, h2, h3, h4, h5, h6') || a.querySelector('.visually-hidden')) return;
+      const span = document.createElement('span');
+      span.className = 'visually-hidden';
+      span.textContent = `: ${text}`;
+      a.append(span);
+      a.removeAttribute('title');
+    });
+  });
+}
+
+/**
+ * Returns true when the element sits in the first section of main (LCP candidate area).
+ * @param {Element} el
+ */
+export function isInFirstSection(el) {
+  const section = el.closest('.section');
+  return !!section && section === section.parentElement.querySelector(':scope > .section');
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
@@ -66,7 +131,8 @@ function autolinkModals(doc) {
  */
 function buildAutoBlocks(main) {
   try {
-    if (!main.querySelector('.hero')) buildHeroBlock(main);
+    // skip auto hero when the page already authors a hero or hero variant block
+    if (!main.querySelector('.hero, [class^="hero-"]')) buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

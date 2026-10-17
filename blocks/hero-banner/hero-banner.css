@@ -1,79 +1,173 @@
-/* hero-banner — full-bleed photographic banner with knockout text + yellow CTA */
-.hero-banner-container .hero-banner-wrapper {
-  max-width: unset;
+/* hero-banner: full-bleed photo (dark blend is baked into the imgix URL),
+   headline vertically centred, caption + on-dark CTAs pinned bottom-left.
+   Source breakpoints: 672px (21:9 crop), 1056px (32px gutters), 1312px (large type). */
+
+/* break out of the section max-width container */
+main > .section > .hero-banner-wrapper {
+  max-width: none;
   padding: 0;
 }
 
 .hero-banner {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 536px;
-  padding: 48px 24px;
+  display: grid;
   overflow: hidden;
-  color: var(--background-color);
+  color: #fff;
 }
 
-/* background photo */
-.hero-banner picture {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-}
-
-.hero-banner picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* dark scrim so knockout text stays legible */
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(90deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 35%) 55%, rgb(0 0 0 / 10%) 100%);
-}
-
+/* both rows share one grid cell so the text row overlays the image row */
 .hero-banner > div {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  grid-area: 1 / 1;
+  min-width: 0;
 }
 
-.hero-banner h1,
+/* image row */
+.hero-banner > div:first-child picture {
+  display: block;
+}
+
+.hero-banner > div:first-child img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* text row: caption sits bottom-left */
+.hero-banner > div:last-child:not(:first-child) {
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-banner > div:last-child:not(:first-child) > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 16px;
+  max-width: 90%;
+  margin: 16px 0 16px 16px;
+}
+
+/* headline: absolutely centred on the whole banner (block is the containing block) */
 .hero-banner h2 {
-  margin: 0 0 0.25em;
-  max-width: 640px;
-  color: var(--background-color);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  margin: 0;
+
+  /* source: 16px wrapper padding + 5px h2 margin-bottom */
+  padding: 0 16px 21px;
+  transform: translateY(-50%);
+  color: #fff;
   font-family: var(--heading-font-family);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-xxl);
-  line-height: 1.1;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .hero-banner p {
-  max-width: 520px;
-  margin: 0 0 1.5em;
-  font-size: 1.25rem;
-  line-height: 1.4;
+  flex: 0 0 100%;
+  margin: 0 0 16px;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 17.5px;
 }
 
-.hero-banner a.button:any-link,
-.hero-banner p strong {
-  display: inline-block;
-  background-color: var(--brand-yellow);
-  color: var(--text-strong-color);
-  font-weight: var(--font-weight-semibold);
-  padding: 0.625em 1.5em;
-  border-radius: var(--border-radius);
+/* CTAs line up in a row */
+.hero-banner p.button-container {
+  display: block;
+  flex: 0 0 auto;
+  margin: 0;
 }
 
-@media (width >= 900px) {
-  .hero-banner {
-    height: 536px;
-    padding: 64px 32px;
+/* on-dark button — source .btn-primary.on-dark */
+main .hero-banner a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--button-radius);
+  padding: var(--button-padding);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 11.45px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+main .hero-banner a.button:hover,
+main .hero-banner a.button:focus-visible {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* external-link glyph on off-site CTAs (source SHOP NOW) */
+main .hero-banner a.button[href^="http"]:not([href*="international.com"])::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: -5px 0 0 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 32 32'%3E%3Cpolygon points='24 26 6 26 6 8 15 8 15 6 6 6 4 8 4 26 6 28 24 28 26 26 26 17 24 17 24 26' fill='%23230000'/%3E%3Cpolygon points='18 4 18 6 24.586 6 14.293 16.293 15.707 17.707 26 7.414 26 14 28 14 28 4 18 4' fill='%23230000'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+@media (width >= 672px) {
+  /* source crops: 21:9 by default, 16:9 when the authored imgix URL asks for it */
+  .hero-banner > div:first-child img {
+    aspect-ratio: 21 / 9;
+  }
+
+  .hero-banner > div:first-child img[src*="ar=16:9"] {
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-banner > div:last-child:not(:first-child) > div {
+    max-width: 50%;
+  }
+
+  .hero-banner h2 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
+@media (width >= 1056px) {
+  .hero-banner > div:last-child:not(:first-child) > div {
+    max-width: 30%;
+    margin: 32px 0 32px 32px;
+  }
+
+  .hero-banner h2 {
+    padding: 0 32px 37px;
+  }
+
+  .hero-banner p {
+    margin-bottom: 32px;
+  }
+
+  .hero-banner p.button-container {
+    margin: 0;
+  }
+}
+
+@media (width >= 1312px) {
+  .hero-banner h2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .hero-banner p {
+    font-size: 16px;
+    line-height: 21.6px;
+  }
+
+  main .hero-banner a.button:any-link {
+    font-size: 13.55px;
   }
 }
