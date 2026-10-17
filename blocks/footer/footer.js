@@ -44,6 +44,9 @@ function buildColumns(section) {
   list.className = 'footer-columns';
   [...list.children].forEach((li, idx) => {
     li.className = 'footer-column';
+    // published fragments wrap the heading link in a <p> when a sub-list follows
+    const p = li.querySelector(':scope > p');
+    if (p && p.children.length === 1 && p.firstElementChild.tagName === 'A') p.replaceWith(p.firstElementChild);
     const title = li.querySelector(':scope > a');
     const links = li.querySelector(':scope > ul');
     title?.classList.add('footer-column-title');
