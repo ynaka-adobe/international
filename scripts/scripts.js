@@ -22,6 +22,9 @@ import {
   applyTargetHeroMboxIfConfigured,
 } from './target.js';
 
+// Document Authoring app origin (used by the sidekick experimentation plugin)
+export const NX_ORIGIN = 'https://da.live/nx';
+
 /**
  * Moves all the attributes from a given element to another given element.
  * @param {Element} from the element to copy attributes from

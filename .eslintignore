@@ -1,1 +1,9 @@
 helix-importer-ui
+# vendored third-party code
+blocks/form/rules
+deps/
+# internal tooling / serverless actions (not shipped with the site)
+tools/
+actions/
+plugins/experimentation/tests
+plugins/experimentation/playwright.config.js

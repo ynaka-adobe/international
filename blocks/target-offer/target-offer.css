@@ -3,6 +3,7 @@
   min-height: 0;
 }
 
+/* stylelint-disable-next-line selector-class-pattern -- stable hook used by Target activities */
 .target-offer__slot:empty {
   min-height: 0;
 }
