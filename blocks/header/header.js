@@ -50,11 +50,23 @@ function closeFlyouts(navBar, except) {
  * Turns each top-level list item (link + nested list + optional image) into a
  * nav item with a flyout panel.
  */
+/**
+ * Published fragments wrap a list item's link in a <p> when the item also holds a
+ * sub-list; unwrap it so the link is a direct child (same as local plain HTML).
+ */
+function unwrapItemLink(li) {
+  const p = li.querySelector(':scope > p');
+  if (p && p.children.length === 1 && p.firstElementChild.tagName === 'A' && p.textContent.trim() === p.firstElementChild.textContent.trim()) {
+    p.replaceWith(p.firstElementChild);
+  }
+  return li.querySelector(':scope > a');
+}
+
 function buildNavItems(list) {
   const items = [...list.children];
   items.forEach((li, idx) => {
     li.className = 'nav-item';
-    const link = li.querySelector(':scope > a');
+    const link = unwrapItemLink(li);
     const subList = li.querySelector(':scope > ul');
     if (link) link.className = 'nav-item-link';
     if (!subList) return;
@@ -78,9 +90,10 @@ function buildNavItems(list) {
       imageWrap.className = 'nav-flyout-image';
       pic.loading = 'lazy';
       pic.setAttribute('fetchpriority', 'low');
-      imageWrap.append(pic);
+      const picP = pic.closest('p');
+      imageWrap.append(pic.closest('picture') || pic);
       content.append(imageWrap);
-      li.querySelector(':scope > p')?.remove();
+      picP?.remove();
     }
     li.append(flyout);
     li.classList.add('nav-item-parent');
