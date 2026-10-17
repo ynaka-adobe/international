@@ -19,10 +19,20 @@ import {
  */
 export async function loadFragment(path) {
   if (path) { //  && path.startsWith('/')
-    const resp = await fetch(`${path}.plain.html`);
+    let resp = await fetch(`${path}.plain.html`);
+    // local preview serves content under /content; published sites serve it at the root
+    if (!resp.ok && path.startsWith('/') && !path.startsWith('/content/')) {
+      resp = await fetch(`/content${path}.plain.html`);
+    }
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
+
+      // resolve relative links (e.g. a form's .json definition) against the fragment URL
+      main.querySelectorAll('a[href]').forEach((a) => {
+        const href = a.getAttribute('href');
+        if (!/^([a-z][a-z0-9+.-]*:|\/|#)/i.test(href)) a.href = new URL(href, resp.url).href;
+      });
 
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {

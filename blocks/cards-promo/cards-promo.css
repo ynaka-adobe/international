@@ -1,113 +1,174 @@
-/* cards-promo — promotional feature cards: 1 yellow (tall) + 2 navy (split) */
+/* cards-promo — white vertical promo cards (source: div.promo-list .vertical-card)
+   image (3:2, 8px radius) on top, title, description, underlined EXPLORE text link.
+   Columns adapt to the card count: 2 cards = two-across, 3+ cards = three-across. */
+
+.cards-promo-wrapper:not(:last-child) {
+  margin-bottom: var(--section-spacing);
+}
+
 .cards-promo > ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
 .cards-promo > ul > li {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border: none;
-  border-radius: var(--border-radius);
-  background-color: var(--cat-neutral-10);
+  min-width: 0;
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 .cards-promo .cards-promo-card-image {
   line-height: 0;
 }
 
+.cards-promo .cards-promo-card-image picture {
+  display: block;
+}
+
 .cards-promo .cards-promo-card-image img {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .cards-promo .cards-promo-card-body {
-  margin: 0;
-  padding: 24px;
   display: flex;
+  flex: 1 1 0%;
   flex-direction: column;
-  flex: 1;
-  gap: 8px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .cards-promo .cards-promo-card-body h2,
 .cards-promo .cards-promo-card-body h3,
-.cards-promo .cards-promo-card-body h4 {
-  margin: 0;
+.cards-promo .cards-promo-card-body h4,
+.cards-promo .cards-promo-card-body h5 {
+  margin: 12px 0 0;
   font-family: var(--heading-font-family);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-l);
-  line-height: 1.2;
+  font-size: var(--heading-font-size-s);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--text-color);
 }
 
 .cards-promo .cards-promo-card-body p {
-  margin: 0;
+  margin: 12px 0 0;
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.5;
+  line-height: var(--body-line-height);
+  color: var(--text-color);
 }
 
-.cards-promo .cards-promo-card-body a:any-link {
-  align-self: flex-start;
-  margin-top: auto;
+/* EXPLORE — underlined uppercase text link, not a filled button */
+.cards-promo .cards-promo-card-body p.button-container {
+  display: block;
+  margin: 32px 0 0;
+  line-height: 0;
 }
 
-/* first card = Cat Yellow (black text) */
-.cards-promo > ul > li:first-child {
-  background-color: var(--brand-yellow);
-  color: var(--text-strong-color);
+main .cards-promo a.button:any-link,
+main .cards-promo .cards-promo-card-body p > a:any-link {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-transform: uppercase;
+  white-space: normal;
 }
 
-/* remaining cards = navy (knockout text) */
-.cards-promo > ul > li:not(:first-child) {
-  background-color: var(--brand-navy);
-  color: var(--background-color);
+main .cards-promo a.button:hover,
+main .cards-promo a.button:focus-visible,
+main .cards-promo .cards-promo-card-body p > a:hover,
+main .cards-promo .cards-promo-card-body p > a:focus-visible {
+  background: none;
+  color: var(--link-hover-color);
 }
 
-.cards-promo > ul > li:not(:first-child) h2,
-.cards-promo > ul > li:not(:first-child) h3,
-.cards-promo > ul > li:not(:first-child) h4 {
-  color: var(--background-color);
+/* Explore More instance (source: individual-promo col-md-4) — a promo row that
+   follows another promo row + heading in the same section */
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper:not(:last-child) {
+  margin-bottom: 64px;
 }
 
-/* CTA inside navy cards uses yellow button */
-.cards-promo > ul > li a.button:any-link {
-  background-color: var(--brand-yellow);
-  border-color: var(--brand-yellow);
-  color: var(--text-strong-color);
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo > ul {
+  gap: 64px;
+}
+
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body {
+  padding: 16px 0;
+}
+
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h2,
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h3,
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h4,
+.cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h5 {
+  margin-top: 12px;
 }
 
 @media (width >= 900px) {
   .cards-promo > ul {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
   }
 
-  /* left yellow card spans both rows */
-  .cards-promo > ul > li:first-child {
-    grid-row: span 2;
+  /* two-across when the block has exactly 2 cards */
+  .cards-promo > ul:has(> li:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* navy cards: image left, text right */
-  .cards-promo > ul > li:not(:first-child) {
-    flex-direction: row;
+  .cards-promo .cards-promo-card-body h2,
+  .cards-promo .cards-promo-card-body h3,
+  .cards-promo .cards-promo-card-body h4,
+  .cards-promo .cards-promo-card-body h5 {
+    margin-top: 16px;
+    line-height: 1;
   }
 
-  .cards-promo > ul > li:not(:first-child) .cards-promo-card-image {
-    flex: 0 0 45%;
+  .cards-promo .cards-promo-card-body p {
+    margin-top: 16px;
   }
 
-  .cards-promo > ul > li:not(:first-child) .cards-promo-card-image img {
-    height: 100%;
-    aspect-ratio: auto;
+  .cards-promo .cards-promo-card-body p.button-container {
+    margin-top: 32px;
   }
 
-  .cards-promo > ul > li:not(:first-child) .cards-promo-card-body {
-    flex: 1;
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo > ul {
+    gap: 16px;
+  }
+
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h2,
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h3,
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h4,
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body h5 {
+    margin-top: 12px;
+    font-size: 30px;
+  }
+
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body p {
+    margin-top: 12px;
+  }
+
+  .cards-promo-wrapper + .default-content-wrapper + .cards-promo-wrapper .cards-promo-card-body p.button-container {
+    margin-top: 32px;
   }
 }

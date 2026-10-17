@@ -1,0 +1,46 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/",
+    "originPage": "International homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "media-text",
+    "imagePattern": "large",
+    "notes": "Image beside rich text, used in dark (section style 'dark') sections; rows can alternate image left/right."
+  },
+  "contentPattern": {
+    "structure": "per row: image | heading + paragraphs/list + CTA link (put the image in the second cell to place it on the right)",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "image + rich text feature rows",
+      "alternating image/text storytelling sections",
+      "award or announcement highlights with badge image"
+    ],
+    "notSuitableFor": [
+      "multi-column text-only layouts",
+      "grids of three or more cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/index"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-16T00:00:00.000Z"
+  }
+}

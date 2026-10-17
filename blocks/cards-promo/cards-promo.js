@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { disambiguateLinks, moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -21,4 +21,5 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+  disambiguateLinks(block, 'li');
 }
