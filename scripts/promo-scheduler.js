@@ -43,27 +43,18 @@ export default async function initPromoScheduler(container) {
   const { data } = await resp.json();
   const now = getEffectiveDate();
 
-  let match = null;
-  let fallback = null;
-
-  for (const row of data) {
-    const start = row.start ? new Date(row.start) : null;
-    const end = row.end ? new Date(row.end) : null;
-    // Support both "fragment URL" (current sheet header) and "fragment"
-    const fragment = row['fragment URL'] || row.fragment || '';
-
-    if (!fragment) continue;
-
-    if (!start && !end) {
-      if (!fallback) fallback = fragment;
-      continue;
-    }
-
-    if (start && end && now >= start && now < end) {
-      match = fragment;
-      break;
-    }
-  }
+  // first in-window row wins; otherwise the first row without dates is the default
+  const rows = data
+    .map((row) => ({
+      start: row.start ? new Date(row.start) : null,
+      end: row.end ? new Date(row.end) : null,
+      // Support both "fragment URL" (current sheet header) and "fragment"
+      fragment: row['fragment URL'] || row.fragment || '',
+    }))
+    .filter((row) => row.fragment);
+  const inWindow = (row) => row.start && row.end && now >= row.start && now < row.end;
+  const match = rows.find(inWindow)?.fragment || null;
+  const fallback = rows.find((row) => !row.start && !row.end)?.fragment || null;
 
   const chosen = match || fallback;
   if (!chosen) return;

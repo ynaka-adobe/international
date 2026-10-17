@@ -1,28 +1,4 @@
 import { loadFragment } from '../fragment/fragment.js';
-import initPromoScheduler from '../../scripts/promo-scheduler.js';
-
-export default async function decorate(block) {
-  // The block contains a link to the promo-scheduler JSON, e.g.:
-  //   /fragments/promo-scheduler.json
-  // We read that URL, run the scheduler, then replace the block with
-  // the winning fragment's decorated content.
-  const link = block.querySelector('a');
-  const schedulerUrl = link ? link.getAttribute('href') : block.textContent.trim();
-
-  if (!schedulerUrl) return;
-
-  const fragmentPath = await resolvePromoFragment(schedulerUrl);
-  if (!fragmentPath) return;
-
-  const fragment = await loadFragment(fragmentPath);
-  if (fragment) {
-    const fragmentSection = fragment.querySelector(':scope .section');
-    if (fragmentSection) {
-      block.closest('.section').classList.add(...fragmentSection.classList);
-      block.closest('.promo-banner').replaceWith(...fragment.childNodes);
-    }
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Internal helpers (same logic as scripts/promo-scheduler.js but returns the
@@ -55,26 +31,41 @@ async function resolvePromoFragment(schedulerUrl) {
   const { data } = await resp.json();
   const now = getEffectiveDate();
 
-  let match = null;
-  let fallback = null;
-
-  for (const row of data) {
-    const start = row.start ? new Date(row.start) : null;
-    const end = row.end ? new Date(row.end) : null;
-    const fragment = row['fragment URL'] || row.fragment || '';
-
-    if (!fragment) continue;
-
-    if (!start && !end) {
-      if (!fallback) fallback = fragment;
-      continue;
-    }
-
-    if (start && end && now >= start && now < end) {
-      match = fragment;
-      break;
-    }
-  }
+  // first in-window row wins; otherwise the first row without dates is the default
+  const rows = data
+    .map((row) => ({
+      start: row.start ? new Date(row.start) : null,
+      end: row.end ? new Date(row.end) : null,
+      // Support both "fragment URL" (current sheet header) and "fragment"
+      fragment: row['fragment URL'] || row.fragment || '',
+    }))
+    .filter((row) => row.fragment);
+  const inWindow = (row) => row.start && row.end && now >= row.start && now < row.end;
+  const match = rows.find(inWindow)?.fragment || null;
+  const fallback = rows.find((row) => !row.start && !row.end)?.fragment || null;
 
   return match || fallback || null;
+}
+
+export default async function decorate(block) {
+  // The block contains a link to the promo-scheduler JSON, e.g.:
+  //   /fragments/promo-scheduler.json
+  // We read that URL, run the scheduler, then replace the block with
+  // the winning fragment's decorated content.
+  const link = block.querySelector('a');
+  const schedulerUrl = link ? link.getAttribute('href') : block.textContent.trim();
+
+  if (!schedulerUrl) return;
+
+  const fragmentPath = await resolvePromoFragment(schedulerUrl);
+  if (!fragmentPath) return;
+
+  const fragment = await loadFragment(fragmentPath);
+  if (fragment) {
+    const fragmentSection = fragment.querySelector(':scope .section');
+    if (fragmentSection) {
+      block.closest('.section').classList.add(...fragmentSection.classList);
+      block.closest('.promo-banner').replaceWith(...fragment.childNodes);
+    }
+  }
 }
