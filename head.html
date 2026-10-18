@@ -15,8 +15,8 @@
 <script nonce="aem">
   /* Persona demo profile: capture URL params (p, li, region), persist them,
      expose to at.js via targetPageParams, and show a demo badge.
-     Personas: 1 Technical Evaluator, 2 Business Decision Maker,
-     3 Procurement Manager, 4 Industry Researcher. */
+     Personas: 1 Fleet Operations Manager, 2 Owner-Operator,
+     3 Vocational & Procurement Buyer, 4 EV & Sustainability Lead. */
   (function () {
     try {
       var q = new URLSearchParams(location.search);
@@ -45,7 +45,7 @@
       };
 
       /* demo badge (dismissible) */
-      var NAMES = { 1: 'Technical Evaluator', 2: 'Business Decision Maker', 3: 'Procurement Manager', 4: 'Industry Researcher' };
+      var NAMES = { 1: 'Fleet Operations Manager', 2: 'Owner-Operator', 3: 'Vocational & Procurement Buyer', 4: 'EV & Sustainability Lead' };
       document.addEventListener('DOMContentLoaded', function () {
         var d = window.demoProfile || {};
         if (!d.persona) return;
