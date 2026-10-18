@@ -27,6 +27,7 @@ import { getMetadata } from './aem.js';
 import { getAnalyticsConfig } from './analytics-config.js';
 import createTransport from './analytics-transport/index.js';
 import { onConsentChange } from './consent.js';
+import { personaId, personaName } from './persona.js';
 
 const CONSENT_CATEGORY = 'analytics';
 const SCROLL_MILESTONES = [25, 50, 75, 100];
@@ -70,6 +71,16 @@ function getLocale() {
   return /^[a-z]{2}(-[a-z]{2})?$/i.test(seg) ? seg.toLowerCase() : 'en';
 }
 
+/**
+ * First path segment, skipping a leading locale segment (e.g. /fr/parts -> parts).
+ * International URLs normally have no locale prefix, so /parts -> parts.
+ */
+function getSiteSection(path) {
+  const segments = path.split('/').filter(Boolean);
+  const hasLocale = /^[a-z]{2}(-[a-z]{2})?$/i.test(segments[0] || '');
+  return segments[hasLocale ? 1 : 0] || 'home';
+}
+
 function getPageContext() {
   if (pageContext) return pageContext;
   const path = window.location.pathname;
@@ -80,7 +91,9 @@ function getPageContext() {
     url: window.location.href,
     locale: getLocale(),
     template: getMetadata('template')?.trim() || 'default',
-    siteSection: path.split('/').filter(Boolean)[1] || 'home',
+    siteSection: getSiteSection(path),
+    // active demo persona (name), or '' when none — reported as eVar15
+    persona: personaName(personaId()),
     sectionCount: sections,
   };
   return pageContext;
