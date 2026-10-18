@@ -1,0 +1,136 @@
+.inventory-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.inventory-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+}
+
+.inventory-detail-gallery-main img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--light-color);
+}
+
+.inventory-detail-gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.inventory-detail-gallery-thumbs button {
+  display: block;
+  width: 88px;
+  height: 66px;
+  padding: 0;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.inventory-detail-gallery-thumbs button[aria-current='true'] {
+  border-color: var(--accent-color);
+}
+
+.inventory-detail-gallery-thumbs img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inventory-detail-info h1 {
+  margin-top: 0;
+}
+
+.inventory-detail-facts {
+  margin: 0 0 24px;
+}
+
+.inventory-detail-facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.inventory-detail-facts dt {
+  font-weight: 700;
+}
+
+.inventory-detail-facts dd {
+  margin: 0;
+  text-align: right;
+}
+
+.inventory-detail-dealer {
+  margin-top: 32px;
+  padding: 16px;
+  background: var(--light-color);
+}
+
+.inventory-detail-dealer h2 {
+  margin-top: 0;
+  font-size: var(--heading-font-size-s);
+}
+
+.inventory-detail-dealer p {
+  margin: 4px 0;
+}
+
+.inventory-detail-dealer a {
+  display: block;
+  margin-top: 4px;
+}
+
+.inventory-detail-dealer-name {
+  font-weight: 700;
+}
+
+.inventory-detail-specs,
+.inventory-detail-description {
+  margin-top: 40px;
+}
+
+.inventory-detail-specs details {
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.inventory-detail-specs summary {
+  padding: 14px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inventory-detail-specs dl {
+  margin: 0 0 12px;
+}
+
+.inventory-detail-specs dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.inventory-detail-specs dd {
+  margin: 0;
+  text-align: right;
+}
+
+@media (width >= 900px) {
+  .inventory-detail-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+  }
+}

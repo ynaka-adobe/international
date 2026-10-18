@@ -106,6 +106,21 @@ function buildHeroBlock(main) {
 }
 
 /**
+ * Builds the inventory-detail block on truck inventory pages. The block
+ * fetches the page's own `.json` product record (Edge Commerce product
+ * pipeline) and replaces the pipeline's minimal markup.
+ * @param {Element} main The container element
+ * @returns {boolean} whether the page is an inventory detail page
+ */
+function buildInventoryDetailBlock(main) {
+  if (!/^\/products\/trucks\/inventory\/[^/]+$/.test(window.location.pathname)) return false;
+  const section = document.createElement('div');
+  section.append(buildBlock('inventory-detail', ''));
+  main.append(section);
+  return true;
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
@@ -134,6 +149,8 @@ function autolinkModals(doc) {
  */
 function buildAutoBlocks(main) {
   try {
+    // inventory pages get their own layout instead of the auto hero
+    if (buildInventoryDetailBlock(main)) return;
     // skip auto hero when the page already authors a hero or hero variant block
     if (!main.querySelector('.hero, [class^="hero-"]')) buildHeroBlock(main);
   } catch (error) {
