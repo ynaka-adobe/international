@@ -71,6 +71,7 @@ export function toXdm(entry) {
           eVars: {
             eVar1: page.template,
             eVar2: page.locale,
+            ...(page.persona ? { eVar15: page.persona } : {}),
             ...(component ? { eVar3: component.id, eVar4: String(component.position) } : {}),
           },
         },

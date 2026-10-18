@@ -57,6 +57,7 @@
  *   eVar12/v12 download file name   prop10/c10 region:linkType
  *   eVar13/v13 scroll depth
  *   eVar14/v14 form name
+ *   eVar15/v15 persona (when a persona is active)
  */
 
 const JS_VERSION = 'JS-2.22.0';
@@ -128,6 +129,8 @@ export function toAnalyticsVars(entry) {
     eVar2: page.locale,
     prop1: page.path,
   };
+
+  if (page.persona) vars.eVar15 = page.persona;
 
   if (component) {
     vars.eVar3 = component.id;
