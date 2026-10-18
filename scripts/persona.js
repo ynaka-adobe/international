@@ -9,10 +9,10 @@ const FILTER_RE = /^[1-4](\s*[,\s]\s*[1-4])*$/;
 // palette). Duplicated rather than imported because that tool page is a
 // standalone admin surface, not part of the regular page bundle.
 export const PERSONA_NAMES = {
-  1: 'Technical Evaluator',
-  2: 'Business Decision Maker',
-  3: 'Procurement & Sourcing Manager',
-  4: 'Industry Researcher',
+  1: 'Fleet Operations Manager',
+  2: 'Owner-Operator',
+  3: 'Vocational & Procurement Buyer',
+  4: 'EV & Sustainability Lead',
 };
 
 /**
