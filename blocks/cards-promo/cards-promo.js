@@ -1,10 +1,11 @@
+import { filterPersonaRows } from '../../scripts/persona.js';
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { disambiguateLinks, moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
+  filterPersonaRows([...block.children]).forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
