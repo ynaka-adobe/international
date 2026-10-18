@@ -218,6 +218,10 @@ async function loadEager(doc) {
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;
   }
+  // story articles get a narrow centered text column (styles.css body.story)
+  if (window.location.pathname.includes('/our-company/stories/')) {
+    doc.body.classList.add('story');
+  }
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);

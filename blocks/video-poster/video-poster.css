@@ -1,7 +1,11 @@
-/* video-poster: structural layout (poster + click-to-load player) */
+/*
+ * video-poster: 16:9 poster + click-to-load player.
+ * Values from the source Sitecore "component video" (sxa-video-wrapper / video-init).
+ * The block fills its container; column width (article column, full bleed)
+ * comes from the section/template, as on the source.
+ */
 .video-poster {
-  margin: 0 auto;
-  max-width: 900px;
+  width: 100%;
 }
 
 .video-poster .video-poster-frame {
@@ -27,79 +31,32 @@
   object-fit: cover;
 }
 
+/* source "big play" graphic: white triangle in a 5px white ring at 75% opacity, 80x80 */
 .video-poster .video-poster-play {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 56px;
-  height: 56px;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
   margin: 0;
   padding: 0;
-  border: 2px solid var(--background-color);
-  border-radius: 50%;
-  background-color: rgb(0 0 0 / 50%);
-  color: var(--background-color);
+  border: 0;
+  border-radius: 2px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 39 80 80'%3E%3Cpath fill='%23fff' d='M60.3 77c.6.2.8.8.6 1.4-.1.3-.3.5-.6.6L30 96.5c-1 .6-1.7.1-1.7-1v-35c0-1.1.8-1.5 1.7-1L60.3 77z'/%3E%3Ccircle cx='40' cy='79' r='37.5' fill='none' stroke='%23fff' stroke-width='5' opacity='.75'/%3E%3C/svg%3E") center / 80px 80px no-repeat;
   cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-/* play triangle */
-.video-poster .video-poster-play::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 16px solid currentcolor;
-  transform: translate(-35%, -50%);
-}
-
-.video-poster .video-poster-play:hover {
-  background-color: var(--accent-color);
-  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .video-poster .video-poster-play:focus-visible {
-  outline: 3px solid var(--accent-color);
-  outline-offset: 4px;
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
-@media (width >= 600px) {
+/* windows high contrast: keep the button visible */
+@media (forced-colors: active) {
   .video-poster .video-poster-play {
-    width: 72px;
-    height: 72px;
-  }
-
-  .video-poster .video-poster-play::before {
-    border-top-width: 13px;
-    border-bottom-width: 13px;
-    border-left-width: 21px;
-  }
-}
-
-@media (width >= 900px) {
-  .video-poster .video-poster-play {
-    width: 88px;
-    height: 88px;
-  }
-
-  .video-poster .video-poster-play::before {
-    border-top-width: 16px;
-    border-bottom-width: 16px;
-    border-left-width: 26px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .video-poster .video-poster-play {
-    transition: none;
-  }
-
-  .video-poster .video-poster-play:hover {
-    transform: translate(-50%, -50%);
+    border: 2px solid ButtonText;
+    border-radius: 50%;
   }
 }

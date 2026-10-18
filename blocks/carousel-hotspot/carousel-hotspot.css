@@ -1,77 +1,42 @@
-/* carousel-hotspot: structural layout (image with %-positioned markers + popups) */
+/*
+ * carousel-hotspot: full-bleed image with %-positioned "+" markers
+ * Source: international.com div.swiper-hotspot (computed styles).
+ * Source switches from slides-under-image to popups-over-image at 768px;
+ * mapped to 900px here. Heading grows to 48px at 1200px.
+ */
+
+/* full-bleed: escape the section content max-width and side padding */
+main > .section > .carousel-hotspot-wrapper {
+  max-width: 100%;
+  padding: 0;
+}
+
+.carousel-hotspot {
+  position: relative;
+  color: var(--text-color);
+}
+
 .carousel-hotspot .carousel-hotspot-stage {
   position: relative;
 }
 
+/* image */
 .carousel-hotspot .carousel-hotspot-media {
   position: relative;
-  overflow: hidden;
 }
 
-.carousel-hotspot .carousel-hotspot-media picture,
+.carousel-hotspot .carousel-hotspot-media picture {
+  display: block;
+}
+
 .carousel-hotspot .carousel-hotspot-media img {
   display: block;
   width: 100%;
-}
-
-.carousel-hotspot .carousel-hotspot-media img {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
-/* header overlay: heading + hotspots switch, bottom-left */
-.carousel-hotspot .carousel-hotspot-header {
-  position: absolute;
-  left: var(--content-padding);
-  bottom: 16px;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 16px;
-  color: #fff;
-}
-
-.carousel-hotspot .carousel-hotspot-header-content > * {
-  margin: 0;
-  color: #fff;
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l);
-  text-transform: uppercase;
-}
-
-.carousel-hotspot .carousel-hotspot-toggle,
-.carousel-hotspot .carousel-hotspot-toggle:hover,
-.carousel-hotspot .carousel-hotspot-toggle:focus-visible {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-  border: 0;
-  background: none;
-  color: #fff;
-  font-size: var(--body-font-size-xs);
-  text-transform: none;
-}
-
-.carousel-hotspot .carousel-hotspot-toggle::before {
-  content: '';
-  box-sizing: border-box;
-  width: 32px;
-  height: 18px;
-  border: 1px solid #fff;
-  border-radius: 9px;
-  background: radial-gradient(circle 6px at 8px 50%, #fff 98%, transparent) no-repeat;
-  transition: background-position 200ms ease, background-color 200ms ease;
-}
-
-.carousel-hotspot .carousel-hotspot-toggle[aria-checked='true']::before {
-  border-color: var(--accent-color);
-  background-color: var(--accent-color);
-  background-position: 14px 0;
-}
-
-/* markers */
+/* markers: top-left corner sits on the authored percentage (as source) */
 .carousel-hotspot .carousel-hotspot-markers {
   position: absolute;
   inset: 0;
@@ -81,64 +46,83 @@
   pointer-events: none;
 }
 
-.carousel-hotspot.hotspots-hidden .carousel-hotspot-markers {
-  display: none;
-}
-
 .carousel-hotspot .carousel-hotspot-marker {
   position: absolute;
   top: var(--hotspot-top);
   left: var(--hotspot-left);
-  width: 32px;
-  height: 32px;
+  display: none;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 0;
   padding: 0;
-  border: 2px solid #fff;
+  border: 2px solid var(--accent-color);
   border-radius: 50%;
-  background-color: rgb(0 0 0 / 40%);
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--background-color);
   pointer-events: auto;
-  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+.carousel-hotspot .carousel-hotspot-marker.active {
+  display: block;
 }
 
 .carousel-hotspot .carousel-hotspot-marker:hover,
-.carousel-hotspot .carousel-hotspot-marker:focus-visible,
 .carousel-hotspot .carousel-hotspot-marker.active {
-  border-color: var(--accent-color);
-  background-color: var(--accent-color);
+  border-color: var(--background-color);
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.carousel-hotspot .carousel-hotspot-marker:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 0;
+}
+
+.carousel-hotspot .carousel-hotspot-marker svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentcolor;
+}
+
+/* header: heading (+ hotspots switch on desktop) */
+.carousel-hotspot .carousel-hotspot-header {
+  margin-bottom: 16px;
+  padding: 24px 16px 0;
+}
+
+.carousel-hotspot .carousel-hotspot-header-content > * {
+  margin: 0;
   color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-.carousel-hotspot .carousel-hotspot-marker::before,
-.carousel-hotspot .carousel-hotspot-marker::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 2px;
-  background-color: currentcolor;
-  transform: translate(-50%, -50%);
-  transition: transform 200ms ease;
-}
-
-.carousel-hotspot .carousel-hotspot-marker::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.carousel-hotspot .carousel-hotspot-marker.active::after {
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-
-/* popups: below the image on small screens */
-.carousel-hotspot .carousel-hotspot-popup {
-  position: relative;
-  padding: 20px 48px 20px 20px;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-.carousel-hotspot .carousel-hotspot-popup[hidden] {
+.carousel-hotspot .carousel-hotspot-toggle {
   display: none;
+}
+
+/* details: hotspot text as slides under the image (mobile) */
+.carousel-hotspot .carousel-hotspot-details {
+  display: grid;
+  padding: 0 16px 12px;
+}
+
+.carousel-hotspot .carousel-hotspot-popup {
+  grid-area: 1 / 1;
+  position: relative;
+  color: var(--text-color);
+}
+
+/* keep every slide in the same cell so the controls don't jump */
+.carousel-hotspot .carousel-hotspot-popup[hidden] {
+  display: block;
+  visibility: hidden;
 }
 
 .carousel-hotspot .carousel-hotspot-popup:focus {
@@ -151,155 +135,281 @@
 
 .carousel-hotspot .carousel-hotspot-popup-body > * {
   margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: var(--body-line-height);
 }
 
-.carousel-hotspot .carousel-hotspot-popup-body > * + * {
-  margin-top: 8px;
-}
-
-.carousel-hotspot .carousel-hotspot-popup-title {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-xs);
-  font-weight: 500;
-  text-transform: uppercase;
+.carousel-hotspot .carousel-hotspot-popup-body > .carousel-hotspot-popup-title {
+  margin-bottom: 12px;
 }
 
 .carousel-hotspot .carousel-hotspot-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--text-color);
-}
-
-.carousel-hotspot .carousel-hotspot-close:hover,
-.carousel-hotspot .carousel-hotspot-close:focus-visible {
-  background: none;
-  color: var(--accent-color);
-}
-
-.carousel-hotspot .carousel-hotspot-close::before,
-.carousel-hotspot .carousel-hotspot-close::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 14px;
-  height: 2px;
-  background-color: currentcolor;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.carousel-hotspot .carousel-hotspot-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-/* hotspot stepping controls (small screens) */
-.carousel-hotspot .carousel-hotspot-navigation {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 12px var(--content-padding);
-}
-
-.carousel-hotspot.hotspots-hidden .carousel-hotspot-navigation {
   display: none;
+}
+
+/* slide controls: progress bar, counter, prev/next */
+.carousel-hotspot .carousel-hotspot-navigation {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+}
+
+.carousel-hotspot .carousel-hotspot-progress {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 2px;
+  margin-top: 16px;
+  background-color: #dad9d8;
+}
+
+.carousel-hotspot .carousel-hotspot-progress span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: width 0.3s;
 }
 
 .carousel-hotspot .carousel-hotspot-count {
   margin: 0;
-  font-size: var(--body-font-size-xs);
-  font-variant-numeric: tabular-nums;
+  color: var(--accent-color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
-.carousel-hotspot .carousel-hotspot-navigation button {
-  position: relative;
+.carousel-hotspot .carousel-hotspot-arrows {
+  display: flex;
+  gap: 8px;
+  margin-top: 19px;
+}
+
+.carousel-hotspot .carousel-hotspot-arrows button,
+.carousel-hotspot .carousel-hotspot-arrows button:hover,
+.carousel-hotspot .carousel-hotspot-arrows button:focus-visible,
+.carousel-hotspot .carousel-hotspot-arrows button:disabled {
   width: 36px;
   height: 36px;
-  padding: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  background-color: transparent;
+  padding: 8px;
+  border: 0;
+  border-radius: var(--button-radius);
+  background-color: #e8e8e8;
   color: var(--text-color);
+  transition: none;
 }
 
-.carousel-hotspot .carousel-hotspot-navigation button:hover,
-.carousel-hotspot .carousel-hotspot-navigation button:focus-visible {
-  border-color: var(--accent-color);
-  background-color: var(--accent-color);
+.carousel-hotspot .carousel-hotspot-arrows button:focus-visible {
+  outline: 2px solid var(--accent-color);
 }
 
-.carousel-hotspot .carousel-hotspot-navigation button::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid currentcolor;
-  border-right: 2px solid currentcolor;
-  transform: translate(-65%, -50%) rotate(45deg);
+.carousel-hotspot .carousel-hotspot-arrows button:disabled {
+  opacity: 0.5;
+  cursor: auto;
 }
 
-.carousel-hotspot .carousel-hotspot-navigation .carousel-hotspot-prev::after {
-  transform: translate(-35%, -50%) rotate(-135deg);
+.carousel-hotspot .carousel-hotspot-arrows svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentcolor;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .carousel-hotspot .carousel-hotspot-marker::before,
-  .carousel-hotspot .carousel-hotspot-marker::after,
-  .carousel-hotspot .carousel-hotspot-toggle::before {
+  .carousel-hotspot .carousel-hotspot-progress span,
+  .carousel-hotspot .carousel-hotspot-toggle::before,
+  .carousel-hotspot .carousel-hotspot-toggle::after {
     transition: none;
   }
 }
 
 @media (width >= 900px) {
+  /* markers: all shown, larger */
+  .carousel-hotspot .carousel-hotspot-marker {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-hotspot.hotspots-hidden .carousel-hotspot-markers {
+    display: none;
+  }
+
+  /* header overlays the image, bottom-left */
   .carousel-hotspot .carousel-hotspot-header {
-    left: 40px;
-    bottom: 40px;
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
   }
 
   .carousel-hotspot .carousel-hotspot-header-content > * {
-    font-size: var(--heading-font-size-xxl);
+    margin-bottom: 16px;
+    color: var(--background-color);
+    font-size: 40px;
   }
 
-  /* popups float beside their marker over the image */
+  /* hotspots switch: 40x24 track (white / grey) with orange knob */
+  .carousel-hotspot .carousel-hotspot-toggle,
+  .carousel-hotspot .carousel-hotspot-toggle:hover,
+  .carousel-hotspot .carousel-hotspot-toggle:focus-visible {
+    position: relative;
+    display: block;
+    height: 24px;
+    margin: 0;
+    padding: 0 0 0 52px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--background-color);
+    font-family: var(--body-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: none;
+    transition: none;
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle::before,
+  .carousel-hotspot .carousel-hotspot-toggle::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    height: 22px;
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle::before {
+    width: 38px;
+    border-radius: 60px;
+    background-color: #bab9b5;
+    transition: background 0.4s;
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle::after {
+    width: 20px;
+    margin-left: 0;
+    border-radius: 100%;
+    background-color: var(--accent-color);
+    transition: margin 0.4s;
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle[aria-checked='true']::before {
+    background-color: var(--background-color);
+  }
+
+  .carousel-hotspot .carousel-hotspot-toggle[aria-checked='true']::after {
+    margin-left: 18px;
+  }
+
+  /* popups float beside their marker (position set by JS) */
   .carousel-hotspot .carousel-hotspot-details {
     position: absolute;
     inset: 0;
     z-index: 3;
+    display: block;
+    padding: 0;
     pointer-events: none;
   }
 
   .carousel-hotspot .carousel-hotspot-popup {
     position: absolute;
-    top: var(--hotspot-top);
-    left: var(--hotspot-left);
-    width: 320px;
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
+    box-sizing: border-box;
+    width: 400px;
+    max-width: calc(100% - 16px);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--background-color);
     pointer-events: auto;
-    transform: translate(24px, -24px);
   }
 
-  .carousel-hotspot .carousel-hotspot-popup.align-end {
-    transform: translate(calc(-100% - 24px), -24px);
+  .carousel-hotspot .carousel-hotspot-popup[hidden] {
+    display: none;
   }
 
-  .carousel-hotspot .carousel-hotspot-popup.align-top {
-    transform: translate(24px, calc(-100% + 24px));
+  /* 8px arrow toward the marker (source .popup-arrow) */
+  .carousel-hotspot .carousel-hotspot-popup::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--background-color);
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
-  .carousel-hotspot .carousel-hotspot-popup.align-end.align-top {
-    transform: translate(calc(-100% - 24px), calc(-100% + 24px));
+  .carousel-hotspot .carousel-hotspot-popup[data-placement='top']::after {
+    top: 100%;
+    left: var(--arrow-offset);
+  }
+
+  .carousel-hotspot .carousel-hotspot-popup[data-placement='bottom']::after {
+    top: 0;
+    left: var(--arrow-offset);
+  }
+
+  .carousel-hotspot .carousel-hotspot-popup[data-placement='left']::after {
+    top: var(--arrow-offset);
+    left: 100%;
+  }
+
+  .carousel-hotspot .carousel-hotspot-popup[data-placement='right']::after {
+    top: var(--arrow-offset);
+    left: 0;
+  }
+
+  .carousel-hotspot .carousel-hotspot-popup-body > .carousel-hotspot-popup-title {
+    font-size: 18px;
+  }
+
+  .carousel-hotspot .carousel-hotspot-close,
+  .carousel-hotspot .carousel-hotspot-close:hover,
+  .carousel-hotspot .carousel-hotspot-close:focus-visible {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--text-color);
+    transition: none;
+  }
+
+  .carousel-hotspot .carousel-hotspot-close:focus-visible {
+    outline: 2px solid var(--accent-color);
+  }
+
+  .carousel-hotspot .carousel-hotspot-close svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
   }
 
   .carousel-hotspot .carousel-hotspot-navigation {
     display: none;
+  }
+}
+
+@media (width >= 1200px) {
+  .carousel-hotspot .carousel-hotspot-header-content > * {
+    font-size: 48px;
   }
 }

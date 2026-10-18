@@ -1,52 +1,102 @@
-/* columns-headline: structural layout (headline beside body copy + CTAs) */
+/* columns-headline: headline beside body copy, footnote and CTAs (source .page-preview) */
+
+/* mobile: stacked */
 .columns-headline .columns-headline-row {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .columns-headline .columns-headline-heading > * {
   margin: 0;
-  color: var(--heading-color);
+  color: var(--text-color);
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-l);
-  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1;
+  text-align: left;
 }
 
-.columns-headline .columns-headline-body > * {
-  margin: 0;
+.columns-headline .columns-headline-body {
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: var(--body-line-height);
+  text-align: left;
 }
 
-.columns-headline .columns-headline-body > * + * {
-  margin-top: 16px;
+.columns-headline .columns-headline-body:has(.button-container) {
+  margin-bottom: 4px;
 }
 
-.columns-headline .columns-headline-body .columns-headline-footnote {
-  font-size: var(--body-font-size-xs);
+.columns-headline .columns-headline-body > p:not(.button-container) {
+  margin: 0 0 10px;
 }
 
+/* last text paragraph (before the CTAs or at the end) has no bottom margin */
+.columns-headline .columns-headline-body > p:not(.button-container):is(:last-child, :has(+ .columns-headline-actions, + .button-container)) {
+  margin-bottom: 0;
+}
+
+.columns-headline .columns-headline-body > p.columns-headline-footnote {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+/* CTAs: global primary/secondary button styles; full width when stacked */
 .columns-headline .columns-headline-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+  flex-direction: column;
 }
 
-.columns-headline .columns-headline-actions .button-container {
+.columns-headline .columns-headline-body .button-container {
   display: block;
-  margin: 0;
+  margin: 20px 0 0;
+}
+
+main .columns-headline .columns-headline-body a.button:any-link {
+  display: block;
+  width: 100%;
 }
 
 @media (width >= 900px) {
   .columns-headline .columns-headline-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 0;
+  }
+
+  .columns-headline .columns-headline-heading,
+  .columns-headline .columns-headline-body {
+    padding: 0 8px;
+  }
+
+  .columns-headline .columns-headline-heading > * {
+    font-size: 30px;
+  }
+
+  .columns-headline .columns-headline-actions {
+    flex-flow: row wrap;
+    column-gap: 5px;
+  }
+
+  .columns-headline .columns-headline-body .button-container {
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  main .columns-headline .columns-headline-body a.button:any-link {
+    display: inline-block;
+    width: auto;
   }
 }
 
 @media (width >= 1200px) {
-  .columns-headline .columns-headline-row {
-    gap: 80px;
+  .columns-headline .columns-headline-heading > * {
+    font-size: var(--heading-font-size-l);
+  }
+
+  .columns-headline .columns-headline-body {
+    font-size: 18px;
   }
 }

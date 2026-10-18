@@ -122,6 +122,9 @@ export default function parse(element, { document }) {
 
   cells.push([content]);
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'hero-banner', cells });
+  // Heroes nested inside a page section render inset (page gutters, rounded corners);
+  // top-level heroes are full-bleed.
+  const name = element.closest('section.section-container') ? 'hero-banner (contained)' : 'hero-banner';
+  const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);
 }

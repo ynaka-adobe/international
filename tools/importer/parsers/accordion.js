@@ -62,7 +62,12 @@ export default function parse(element, { document }) {
   const heading = [...layout.children].find((c) => /^H[1-6]$/.test(c.tagName));
   if (heading && textOf(heading)) {
     const h = document.createElement(heading.tagName.toLowerCase());
-    h.textContent = textOf(heading);
+    // keep the source's <br> line breaks ("BATTERY-ELECTRIC<br>TECHNOLOGY")
+    heading.querySelectorAll('br').forEach((br) => br.replaceWith(document.createTextNode('\u0000')));
+    textOf(heading).split('\u0000').map((s) => s.trim()).filter(Boolean).forEach((part, i) => {
+      if (i) h.append(document.createElement('br'));
+      h.append(part);
+    });
     before.push(h);
   }
 
