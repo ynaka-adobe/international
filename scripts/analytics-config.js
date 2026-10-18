@@ -43,13 +43,13 @@ export const ANALYTICS_CONFIG = {
   /* ── mode 2: AppMeasurement → existing Adobe Analytics / Workspace ─────── */
 
   /**
-   * Adobe Analytics report suite ID. EMPTY until the duplicate International
-   * report suite exists — paste its RSID here (or set the
-   * `analytics-report-suite-id` meta). While empty the site runs in `debug`
+   * Adobe Analytics report suite ID: the duplicate International
+   * report suite (or set the
+   * `analytics-report-suite-id` meta). If empty the site runs in `debug`
    * mode (data layer only, nothing is sent). With the RSID and tracking server
    * set, the site sends real hits into Analysis Workspace.
    */
-  reportSuiteId: '',
+  reportSuiteId: 'acsmarketinginternational',
 
   /** Analytics tracking server for that org. */
   trackingServer: 'acsmarketing.sc.omtrdc.net',
