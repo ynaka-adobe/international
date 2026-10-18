@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/governance",
+  "path": "our-company/governance",
+  "timestamp": "2026-10-18T02:17:59.179Z",
+  "title": "Governance | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

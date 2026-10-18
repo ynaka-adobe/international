@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/understanding-fleet-electrification-needs",
+  "path": "our-company/stories/2024/understanding-fleet-electrification-needs",
+  "timestamp": "2026-10-18T02:26:04.213Z",
+  "title": "Consulting: Understanding Fleet Electrification Needs | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

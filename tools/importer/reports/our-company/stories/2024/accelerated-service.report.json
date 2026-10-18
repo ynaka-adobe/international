@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/accelerated-service",
+  "path": "our-company/stories/2024/accelerated-service",
+  "timestamp": "2026-10-18T02:23:35.187Z",
+  "title": "Get Back to Uptime Faster with Accelerated Service | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/features/engines-and-powertrains/cummins-x15",
+  "path": "products/trucks/features/engines-and-powertrains/cummins-x15",
+  "timestamp": "2026-10-18T02:34:54.157Z",
+  "title": "Cummins® X15 | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "carousel-cards",
+    "columns-media",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs"
+  ]
+}

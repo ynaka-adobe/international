@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/terms-of-use",
+  "path": "terms-of-use",
+  "timestamp": "2026-10-18T02:41:13.023Z",
+  "title": "Terms of Use | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "accordion"
+  ]
+}

@@ -1,0 +1,191 @@
+/* carousel-hero: structural layout (full-width cross-fading slides with arrows) */
+.carousel-hero {
+  position: relative;
+  color: #fff;
+}
+
+.carousel-hero .carousel-hero-slides-container {
+  position: relative;
+}
+
+/* fade effect: slides stacked in one grid cell */
+.carousel-hero .carousel-hero-slides {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  touch-action: pan-y;
+}
+
+.carousel-hero .carousel-hero-slide {
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 560px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 0s linear 300ms;
+}
+
+.carousel-hero .carousel-hero-slide.active {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 300ms ease, visibility 0s;
+}
+
+.carousel-hero .carousel-hero-slide-image {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-hero .carousel-hero-slide-image picture,
+.carousel-hero .carousel-hero-slide-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-hero .carousel-hero-slide-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px var(--content-padding) 88px;
+}
+
+.carousel-hero .carousel-hero-headline > * {
+  margin: 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.carousel-hero .carousel-hero-headline .carousel-hero-tagline {
+  font-weight: 300;
+}
+
+.carousel-hero .carousel-hero-caption {
+  max-width: 480px;
+}
+
+.carousel-hero .carousel-hero-caption > * {
+  margin: 0;
+}
+
+.carousel-hero .carousel-hero-caption > * + * {
+  margin-top: 16px;
+}
+
+.carousel-hero .carousel-hero-count {
+  font-size: var(--body-font-size-xs);
+}
+
+/* on-dark primary button */
+main .carousel-hero a.button:any-link {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main .carousel-hero a.button:hover,
+main .carousel-hero a.button:focus-visible {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* prev / next arrows */
+.carousel-hero .carousel-hero-navigation {
+  position: absolute;
+  right: var(--content-padding);
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-hero .carousel-hero-navigation button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #fff;
+}
+
+.carousel-hero .carousel-hero-navigation button:hover,
+.carousel-hero .carousel-hero-navigation button:focus-visible {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.carousel-hero .carousel-hero-navigation button[aria-disabled='true'] {
+  opacity: 0.4;
+  background-color: transparent;
+  color: #fff;
+  cursor: default;
+}
+
+.carousel-hero .carousel-hero-navigation button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+
+.carousel-hero .carousel-hero-navigation .carousel-hero-prev::after {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-hero .carousel-hero-slide,
+  .carousel-hero .carousel-hero-slide.active {
+    transition: none;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slide {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    position: absolute;
+    inset: 0;
+    justify-content: space-between;
+    padding: 40px;
+  }
+
+  .carousel-hero .carousel-hero-headline {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .carousel-hero .carousel-hero-headline > * {
+    font-size: var(--heading-font-size-xxl);
+  }
+
+  .carousel-hero .carousel-hero-caption {
+    max-width: 30%;
+  }
+
+  .carousel-hero .carousel-hero-navigation {
+    right: 40px;
+    bottom: 40px;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/parts/ih-gascap",
+  "path": "parts/ih-gascap",
+  "timestamp": "2026-10-18T02:31:49.742Z",
+  "title": "IH Gascap | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "accordion-specs"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/uptime-advocate",
+  "path": "services/uptime-advocate",
+  "timestamp": "2026-10-18T02:40:58.985Z",
+  "title": "Uptime Advocate | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-promo"
+  ]
+}

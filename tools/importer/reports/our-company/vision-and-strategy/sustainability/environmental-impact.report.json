@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/vision-and-strategy/sustainability/environmental-impact",
+  "path": "our-company/vision-and-strategy/sustainability/environmental-impact",
+  "timestamp": "2026-10-18T02:31:15.130Z",
+  "title": "Environmental Impact | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "cards-category"
+  ]
+}

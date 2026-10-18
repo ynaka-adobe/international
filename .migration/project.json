@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "international": {
+      "previewOrg": "ynaka-adobe",
+      "previewSite": "international",
+      "contentHostUrl": "https://content.da.live/ynaka-adobe/international/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

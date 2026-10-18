@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/financing/ev-fleet",
+  "path": "services/financing/ev-fleet",
+  "timestamp": "2026-10-18T02:36:28.193Z",
+  "title": "EV Fleet Financing | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-cta-band",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "carousel-cards"
+  ]
+}

@@ -33,7 +33,11 @@ function buildCard(card, document) {
 
   // Text cell
   const content = [];
-  const titleText = textOf(card.querySelector('.promo-title'));
+  // <br> inside a title separates words (e.g. "ACCELERATED<br>SERVICE")
+  const titleEl = card.querySelector('.promo-title');
+  const titleClone = titleEl ? titleEl.cloneNode(true) : null;
+  if (titleClone) titleClone.querySelectorAll('br').forEach((br) => br.replaceWith(' '));
+  const titleText = textOf(titleClone);
   if (titleText) {
     const h = document.createElement('h3');
     h.textContent = titleText;
@@ -48,7 +52,11 @@ function buildCard(card, document) {
   }
 
   const desc = card.querySelector('.promo-description');
-  if (desc && textOf(desc)) {
+  const descBlocks = desc ? [...desc.children].filter((c) => /^(P|UL|OL)$/.test(c.tagName) && textOf(c)) : [];
+  if (descBlocks.length) {
+    // rich description (content pages): keep its paragraphs/lists, no nested <p>
+    content.push(...descBlocks);
+  } else if (desc && textOf(desc)) {
     const p = document.createElement('p');
     p.innerHTML = desc.innerHTML;
     // drop trailing <br> left by the CMS

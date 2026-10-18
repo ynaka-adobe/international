@@ -1,0 +1,46 @@
+{
+  "variantName": "quote-large-caps",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/our-company/stories/2023/supertruck-ii",
+    "originPage": "International SuperTruck II story page",
+    "blockPosition": "middle",
+    "sourceComponent": "Sitecore SXA \"promo quote-promo\""
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "quote",
+    "imagePattern": "none",
+    "notes": "Full-width centered pull quote: large uppercase headline-font quotation with a decorative opening quote mark above it, followed by a small uppercase grey attribution line. No portrait, no background."
+  },
+  "contentPattern": {
+    "structure": "row 1: quotation paragraph(s); row 2 (optional): attribution paragraph (italic text becomes <cite>). Rendered as figure > blockquote + figcaption",
+    "buttonCount": 0,
+    "imageCount": 0,
+    "hasDescription": false,
+    "hasCTA": false
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "pull quotes in story/article bodies",
+      "executive or customer quotes with a name | company attribution"
+    ],
+    "notSuitableFor": [
+      "testimonials with portraits or carousels of quotes",
+      "headings or callout statements that are not quotations"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/our-company/stories/2023/supertruck-ii"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

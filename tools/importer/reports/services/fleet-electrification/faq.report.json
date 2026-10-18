@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-electrification/faq",
+  "path": "services/fleet-electrification/faq",
+  "timestamp": "2026-10-18T02:38:00.190Z",
+  "title": "FAQ | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "accordion",
+    "accordion",
+    "accordion",
+    "accordion"
+  ]
+}

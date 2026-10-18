@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/a-finance-partner-that-understands-the-truck-business",
+  "path": "our-company/stories/2025/a-finance-partner-that-understands-the-truck-business",
+  "timestamp": "2026-10-18T02:26:28.210Z",
+  "title": "A finance partner that understands the truck business | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

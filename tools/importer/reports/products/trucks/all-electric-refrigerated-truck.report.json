@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/all-electric-refrigerated-truck",
+  "path": "products/trucks/all-electric-refrigerated-truck",
+  "timestamp": "2026-10-18T02:33:40.889Z",
+  "title": "All Electric Refrigerated Truck | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline"
+  ]
+}

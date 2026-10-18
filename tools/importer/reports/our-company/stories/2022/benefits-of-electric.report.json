@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2022/benefits-of-electric",
+  "path": "our-company/stories/2022/benefits-of-electric",
+  "timestamp": "2026-10-18T02:20:04.755Z",
+  "title": "Benefits of Electric | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

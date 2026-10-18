@@ -33,9 +33,12 @@
   "usage": {
     "pagesUsing": [
       "/en/catcorp",
-      "/index"
+      "/index",
+      "/products/trucks/series/lt",
+      "/our-company/stories/2023/supertruck-ii",
+      "/our-company"
     ],
-    "reuseCount": 2,
-    "lastUsed": "2026-10-16T00:00:00.000Z"
+    "reuseCount": 5,
+    "lastUsed": "2026-10-18"
   }
 }

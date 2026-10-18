@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/fr/products/trucks/classes/severe",
+  "path": "fr/products/trucks/classes/severe",
+  "timestamp": "2026-10-18T02:13:37.675Z",
+  "title": "Camions de Service Intense | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-overlay",
+    "columns-media",
+    "columns-media"
+  ]
+}

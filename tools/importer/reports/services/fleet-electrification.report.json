@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-electrification",
+  "path": "services/fleet-electrification",
+  "timestamp": "2026-10-18T02:37:19.581Z",
+  "title": "Fleet Electrification | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "video-poster"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/classes/medium",
+  "path": "products/trucks/classes/medium",
+  "timestamp": "2026-10-18T02:33:55.622Z",
+  "title": "Medium-Duty Trucks | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-overlay",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/an-oems-perspective-on-charging-infrastructure",
+  "path": "our-company/stories/2024/an-oems-perspective-on-charging-infrastructure",
+  "timestamp": "2026-10-18T02:23:44.767Z",
+  "title": "An OEM’s Perspective on Charging Infrastructure for Medium and Heavy-Duty Vehicles—Part 1 | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

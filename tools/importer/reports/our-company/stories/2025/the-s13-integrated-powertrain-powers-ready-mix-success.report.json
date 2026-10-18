@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/the-s13-integrated-powertrain-powers-ready-mix-success",
+  "path": "our-company/stories/2025/the-s13-integrated-powertrain-powers-ready-mix-success",
+  "timestamp": "2026-10-18T02:28:19.768Z",
+  "title": "The S13 Integrated Powertrain powers ready mix success | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

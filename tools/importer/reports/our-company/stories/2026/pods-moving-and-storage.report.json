@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/pods-moving-and-storage",
+  "path": "our-company/stories/2026/pods-moving-and-storage",
+  "timestamp": "2026-10-18T02:30:04.707Z",
+  "title": "Reliability is everything for PODS Moving and Storage fleet | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

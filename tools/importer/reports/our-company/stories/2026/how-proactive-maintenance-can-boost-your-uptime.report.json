@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/how-proactive-maintenance-can-boost-your-uptime",
+  "path": "our-company/stories/2026/how-proactive-maintenance-can-boost-your-uptime",
+  "timestamp": "2026-10-18T02:29:27.828Z",
+  "title": "How proactive maintenance can boost your uptime | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

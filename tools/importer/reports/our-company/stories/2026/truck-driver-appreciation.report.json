@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/truck-driver-appreciation",
+  "path": "our-company/stories/2026/truck-driver-appreciation",
+  "timestamp": "2026-10-18T02:30:35.384Z",
+  "title": "Meet the people who call the LT® Series truck home | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

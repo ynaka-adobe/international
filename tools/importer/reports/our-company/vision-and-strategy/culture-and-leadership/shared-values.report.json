@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/vision-and-strategy/culture-and-leadership/shared-values",
+  "path": "our-company/vision-and-strategy/culture-and-leadership/shared-values",
+  "timestamp": "2026-10-18T02:30:49.247Z",
+  "title": "Shared Values | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

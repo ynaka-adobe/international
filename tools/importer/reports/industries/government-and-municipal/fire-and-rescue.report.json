@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/government-and-municipal/fire-and-rescue",
+  "path": "industries/government-and-municipal/fire-and-rescue",
+  "timestamp": "2026-10-18T02:15:49.479Z",
+  "title": "Fire and Rescue | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

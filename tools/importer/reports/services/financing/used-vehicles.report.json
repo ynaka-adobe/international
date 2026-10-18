@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/financing/used-vehicles",
+  "path": "services/financing/used-vehicles",
+  "timestamp": "2026-10-18T02:37:03.938Z",
+  "title": "Used Vehicle Financing Solutions | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards"
+  ]
+}

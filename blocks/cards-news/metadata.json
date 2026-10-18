@@ -1,0 +1,46 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/our-company",
+    "originPage": "International Our Company page",
+    "blockPosition": "bottom",
+    "sourceComponent": "news-promo"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "news-listing",
+    "imagePattern": "mixed",
+    "notes": "First item is a tall featured card with date, NEWS RELEASE label, title and LEARN MORE in white over a darkened image; the remaining items form a stacked list beside it on desktop (thumbnail left, date/title/LEARN MORE right). Everything stacks on mobile."
+  },
+  "contentPattern": {
+    "structure": "one row per news item: image | date paragraph + optional label paragraph (e.g. NEWS RELEASE) + title heading (e.g. h3) + LEARN MORE link; the first row is the featured card",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": false,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "news / press release teasers with one featured item",
+      "dated article lists with thumbnails"
+    ],
+    "notSuitableFor": [
+      "equal-weight image tiles (use cards-overlay)",
+      "image-top promo cards with body copy (use cards-promo)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/our-company"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

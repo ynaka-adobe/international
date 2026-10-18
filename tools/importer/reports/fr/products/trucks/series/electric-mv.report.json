@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/fr/products/trucks/series/electric-mv",
+  "path": "fr/products/trucks/series/electric-mv",
+  "timestamp": "2026-10-18T02:13:52.997Z",
+  "title": "Série eMV | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "carousel-cards",
+    "cards-overlay",
+    "carousel-hotspot",
+    "carousel-hotspot"
+  ]
+}

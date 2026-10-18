@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/sourcewell/sourcewell-truck",
+  "path": "services/sourcewell/sourcewell-truck",
+  "timestamp": "2026-10-18T02:40:51.179Z",
+  "title": "Sourcewell Truck | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "cards-category",
+    "accordion"
+  ]
+}

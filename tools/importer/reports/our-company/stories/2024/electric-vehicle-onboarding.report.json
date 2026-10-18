@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/electric-vehicle-onboarding",
+  "path": "our-company/stories/2024/electric-vehicle-onboarding",
+  "timestamp": "2026-10-18T02:24:32.738Z",
+  "title": "Electric Vehicle Onboarding: The Keys to Success for Fleets | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

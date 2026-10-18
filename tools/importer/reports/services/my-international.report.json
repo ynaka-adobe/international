@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/my-international",
+  "path": "services/my-international",
+  "timestamp": "2026-10-18T02:39:12.303Z",
+  "title": "My International™ | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "video-poster"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/dealer-network/recruitment/influence-winners/2024-technician-of-the-year/veterans",
+  "path": "dealer-network/recruitment/influence-winners/2024-technician-of-the-year/veterans",
+  "timestamp": "2026-10-18T02:12:51.672Z",
+  "title": "Veteran Technicians of the Year | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

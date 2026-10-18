@@ -1,0 +1,123 @@
+/* accordion-specs: structural layout (thin-rule accordion with spec groups) */
+.accordion-specs {
+  border-top: 1px solid var(--border-color);
+}
+
+.accordion-specs .accordion-specs-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.accordion-specs .accordion-specs-item-label {
+  position: relative;
+  display: block;
+  padding: 16px 40px 16px 0;
+  color: var(--heading-color);
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.accordion-specs .accordion-specs-item-label::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-specs .accordion-specs-item-label > * {
+  margin: 0;
+  font-size: inherit;
+}
+
+.accordion-specs .accordion-specs-item-label:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* plus / minus icon */
+.accordion-specs .accordion-specs-item-label::before,
+.accordion-specs .accordion-specs-item-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 14px;
+  height: 2px;
+  background-color: currentcolor;
+  transition: transform 200ms ease;
+}
+
+.accordion-specs .accordion-specs-item-label::after {
+  transform: rotate(90deg);
+}
+
+.accordion-specs .accordion-specs-item[open] .accordion-specs-item-label::after {
+  transform: rotate(0deg);
+}
+
+.accordion-specs .accordion-specs-item-body {
+  padding: 0 0 24px;
+}
+
+.accordion-specs .accordion-specs-item-body p,
+.accordion-specs .accordion-specs-item-body ul,
+.accordion-specs .accordion-specs-item-body ol {
+  margin: 0;
+}
+
+.accordion-specs .accordion-specs-specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.accordion-specs .accordion-specs-spec-label > * {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+}
+
+.accordion-specs .accordion-specs-spec-data {
+  margin-top: 8px;
+}
+
+.accordion-specs .accordion-specs-spec-data > * + * {
+  margin-top: 4px;
+}
+
+.accordion-specs .accordion-specs-spec-data .accordion-specs-sub-label {
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.accordion-specs .accordion-specs-spec-data .accordion-specs-sub-label:first-child {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-specs .accordion-specs-item-label::before,
+  .accordion-specs .accordion-specs-item-label::after {
+    transition: none;
+  }
+}
+
+@media (width >= 600px) {
+  .accordion-specs .accordion-specs-specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .accordion-specs .accordion-specs-item-label {
+    padding: 24px 48px 24px 0;
+  }
+
+  .accordion-specs .accordion-specs-specs {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (width >= 1200px) {
+  .accordion-specs .accordion-specs-specs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

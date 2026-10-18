@@ -1,0 +1,135 @@
+/* cards-overlay: structural layout (image cards with text overlaid bottom-left) */
+.cards-overlay > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-overlay .cards-overlay-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  text-align: start;
+}
+
+/* image sits behind the in-flow body; the card is the stretched link's containing block */
+.cards-overlay .cards-overlay-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.cards-overlay .cards-overlay-card-image picture,
+.cards-overlay .cards-overlay-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+/* dark gradient behind the overlaid text */
+.cards-overlay .cards-overlay-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+}
+
+.cards-overlay .cards-overlay-card-body {
+  padding: 24px;
+}
+
+.cards-overlay .cards-overlay-card-body > * {
+  margin: 0;
+}
+
+.cards-overlay .cards-overlay-card-body > * + * {
+  margin-top: 8px;
+}
+
+.cards-overlay .cards-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  text-transform: uppercase;
+}
+
+.cards-overlay .cards-overlay-eyebrow {
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+}
+
+/* link reset: render as a white text link, not a button */
+main .cards-overlay a.cards-overlay-link:any-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+/* stretched link: the whole card is clickable */
+.cards-overlay a.cards-overlay-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+main .cards-overlay a.cards-overlay-link:hover,
+main .cards-overlay a.cards-overlay-link:focus-visible {
+  background: none;
+  color: var(--accent-color);
+}
+
+.cards-overlay .cards-overlay-linked:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.cards-overlay .cards-overlay-linked:hover .cards-overlay-card-image img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-overlay .cards-overlay-card-image img {
+    transition: none;
+  }
+
+  .cards-overlay .cards-overlay-linked:hover .cards-overlay-card-image img {
+    transform: none;
+  }
+}
+
+@media (width >= 600px) {
+  .cards-overlay > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-overlay > ul {
+    gap: 24px;
+  }
+
+  .cards-overlay .cards-overlay-card {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+  }
+
+  .cards-overlay .cards-overlay-card-body {
+    padding: 32px;
+  }
+}

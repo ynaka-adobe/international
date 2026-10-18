@@ -1,0 +1,45 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero-slider",
+    "imagePattern": "large",
+    "notes": "Full-width 16x9 cross-fading hero slides with stacked uppercase headline (+ light tagline), slide count, caption + EXPLORE button, prev/next arrow buttons."
+  },
+  "contentPattern": {
+    "structure": "per slide: image | heading (h2) + optional tagline paragraph + body paragraph + CTA link (with 2+ plain paragraphs the first is the tagline)",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "full-width feature/powertrain sliders with arrow navigation",
+      "image slides with headline, copy and single CTA"
+    ],
+    "notSuitableFor": [
+      "sliders needing image thumbnail navigation (use carousel-thumbnails)",
+      "card sliders showing several items at once (use carousel-cards)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

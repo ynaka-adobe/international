@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/sustainable-solutions-report",
+  "path": "our-company/stories/2024/sustainable-solutions-report",
+  "timestamp": "2026-10-18T02:25:41.391Z",
+  "title": "International® Sustainable Solutions Special Report | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

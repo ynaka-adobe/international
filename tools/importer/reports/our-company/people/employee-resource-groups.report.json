@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/people/employee-resource-groups",
+  "path": "our-company/people/employee-resource-groups",
+  "timestamp": "2026-10-18T02:19:16.580Z",
+  "title": "Employee Resource Groups | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

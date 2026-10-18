@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-electrification/customer-onboarding",
+  "path": "services/fleet-electrification/customer-onboarding",
+  "timestamp": "2026-10-18T02:37:43.269Z",
+  "title": "Customer Onboarding | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

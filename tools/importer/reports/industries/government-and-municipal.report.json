@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/government-and-municipal",
+  "path": "industries/government-and-municipal",
+  "timestamp": "2026-10-18T02:15:41.796Z",
+  "title": "Government and Municipal Solutions | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "carousel-cards",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "variantName": "carousel-hotspot",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "interactive-hotspots",
+    "imagePattern": "large",
+    "notes": "Full-bleed image with percentage-positioned + markers that open title/text popups, heading and Hotspots switch overlaid bottom-left; on small screens the popup and prev/next hotspot controls sit below the image."
+  },
+  "contentPattern": {
+    "structure": "row 1: image | heading (h2); then one row per hotspot: position ('top: 85%, left: 58%' or '85%, 58%' = top, left) | title + paragraph",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasDescription": true,
+    "hasCTA": false
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "interior / product feature hotspot images",
+      "annotated images with clickable points of interest"
+    ],
+    "notSuitableFor": [
+      "plain image slideshows",
+      "content without meaningful positions on a single image"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

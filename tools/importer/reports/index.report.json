@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/",
+  "path": "index",
+  "timestamp": "2026-10-17T05:40:32.933Z",
+  "title": "Commercial Trucks, Buses, Engines & Parts | International®",
+  "template": "home",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "carousel-thumbnails",
+    "cards-promo",
+    "cards-promo",
+    "cards-promo",
+    "cards-promo",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "cards-category"
+  ]
+}

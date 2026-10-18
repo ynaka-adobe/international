@@ -1,0 +1,105 @@
+/* video-poster: structural layout (poster + click-to-load player) */
+.video-poster {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.video-poster .video-poster-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--dark-color);
+}
+
+.video-poster .video-poster-image,
+.video-poster .video-poster-image img,
+.video-poster .video-poster-player {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-poster .video-poster-frame img {
+  object-fit: cover;
+}
+
+.video-poster .video-poster-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--background-color);
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 50%);
+  color: var(--background-color);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* play triangle */
+.video-poster .video-poster-play::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid currentcolor;
+  transform: translate(-35%, -50%);
+}
+
+.video-poster .video-poster-play:hover {
+  background-color: var(--accent-color);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.video-poster .video-poster-play:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+@media (width >= 600px) {
+  .video-poster .video-poster-play {
+    width: 72px;
+    height: 72px;
+  }
+
+  .video-poster .video-poster-play::before {
+    border-top-width: 13px;
+    border-bottom-width: 13px;
+    border-left-width: 21px;
+  }
+}
+
+@media (width >= 900px) {
+  .video-poster .video-poster-play {
+    width: 88px;
+    height: 88px;
+  }
+
+  .video-poster .video-poster-play::before {
+    border-top-width: 16px;
+    border-bottom-width: 16px;
+    border-left-width: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-poster .video-poster-play {
+    transition: none;
+  }
+
+  .video-poster .video-poster-play:hover {
+    transform: translate(-50%, -50%);
+  }
+}

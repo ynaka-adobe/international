@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/parts",
+  "path": "parts",
+  "timestamp": "2026-10-18T02:31:36.489Z",
+  "title": "Parts | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "accordion"
+  ]
+}

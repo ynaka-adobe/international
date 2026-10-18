@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/support-that-goes-beyond-the-sale",
+  "path": "our-company/stories/2026/support-that-goes-beyond-the-sale",
+  "timestamp": "2026-10-18T02:30:12.288Z",
+  "title": "Support that goes beyond the sale | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/private-and-general-freight/local-and-regional-delivery",
+  "path": "industries/private-and-general-freight/local-and-regional-delivery",
+  "timestamp": "2026-10-18T02:16:15.985Z",
+  "title": "Local and Regional Delivery | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

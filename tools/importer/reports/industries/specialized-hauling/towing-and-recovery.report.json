@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/specialized-hauling/towing-and-recovery",
+  "path": "industries/specialized-hauling/towing-and-recovery",
+  "timestamp": "2026-10-18T02:17:03.851Z",
+  "title": "Towing and Recovery | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

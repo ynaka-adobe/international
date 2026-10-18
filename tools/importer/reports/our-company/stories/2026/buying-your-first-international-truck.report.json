@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/buying-your-first-international-truck",
+  "path": "our-company/stories/2026/buying-your-first-international-truck",
+  "timestamp": "2026-10-18T02:28:59.347Z",
+  "title": "Buying your first International truck | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

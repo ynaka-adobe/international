@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/maintenance-services/accelerated-service",
+  "path": "services/maintenance-services/accelerated-service",
+  "timestamp": "2026-10-18T02:39:04.089Z",
+  "title": "Accelerated Service | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "accordion"
+  ]
+}

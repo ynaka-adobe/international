@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-electrification/ev-podcast",
+  "path": "services/fleet-electrification/ev-podcast",
+  "timestamp": "2026-10-18T02:37:50.900Z",
+  "title": "EV Podcast | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster"
+  ]
+}

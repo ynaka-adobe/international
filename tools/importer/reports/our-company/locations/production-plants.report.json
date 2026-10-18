@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/locations/production-plants",
+  "path": "our-company/locations/production-plants",
+  "timestamp": "2026-10-18T02:18:32.979Z",
+  "title": "Production Plants | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

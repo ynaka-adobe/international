@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2023/mv-series-safety",
+  "path": "our-company/stories/2023/mv-series-safety",
+  "timestamp": "2026-10-18T02:22:38.317Z",
+  "title": "Safety on the Jobsite and on the Road | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

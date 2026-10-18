@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/fr/products/trucks/series/hv",
+  "path": "fr/products/trucks/series/hv",
+  "timestamp": "2026-10-18T02:13:59.028Z",
+  "title": "Série HV | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "cards-overlay"
+  ]
+}

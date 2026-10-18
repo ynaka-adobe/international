@@ -1,0 +1,45 @@
+{
+  "variantName": "cards-overlay",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "navigation-cards",
+    "imagePattern": "large",
+    "notes": "Large rounded image cards with dark bottom gradient and white eyebrow/title/link overlaid bottom-left; the whole card is linked."
+  },
+  "contentPattern": {
+    "structure": "per card: image | optional eyebrow paragraph + heading (e.g. h4) + link (makes the whole card clickable)",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": false,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "explore-more / related product cards",
+      "image navigation tiles with overlaid titles"
+    ],
+    "notSuitableFor": [
+      "cards with long body copy",
+      "image-top cards with text below (use cards-promo)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

@@ -1,0 +1,51 @@
+/* columns-cta-band: structural layout (claim text beside a CTA) */
+.columns-cta-band .columns-cta-band-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-cta-band .columns-cta-band-text > * {
+  margin: 0;
+}
+
+.columns-cta-band .columns-cta-band-text > * + * {
+  margin-top: 12px;
+}
+
+.columns-cta-band .columns-cta-band-text p {
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.columns-cta-band .columns-cta-band-cta > * {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .columns-cta-band .columns-cta-band-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .columns-cta-band .columns-cta-band-text {
+    flex: 1 1 75%;
+  }
+
+  .columns-cta-band .columns-cta-band-cta {
+    flex: 0 0 auto;
+    text-align: end;
+  }
+}
+
+@media (width >= 900px) {
+  .columns-cta-band .columns-cta-band-row {
+    gap: 48px;
+  }
+}

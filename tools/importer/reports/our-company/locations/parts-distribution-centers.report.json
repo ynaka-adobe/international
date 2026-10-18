@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/locations/parts-distribution-centers",
+  "path": "our-company/locations/parts-distribution-centers",
+  "timestamp": "2026-10-18T02:18:24.629Z",
+  "title": "Parts Distribution Centers | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "accordion",
+    "accordion",
+    "accordion"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/resources/tem-body-builder/engine-resources",
+  "path": "products/resources/tem-body-builder/engine-resources",
+  "timestamp": "2026-10-18T02:33:05.480Z",
+  "title": "Engine Resources | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

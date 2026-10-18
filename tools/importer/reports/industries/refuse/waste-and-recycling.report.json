@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/refuse/waste-and-recycling",
+  "path": "industries/refuse/waste-and-recycling",
+  "timestamp": "2026-10-18T02:16:39.308Z",
+  "title": "Waste and Recycling Solutions | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

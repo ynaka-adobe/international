@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-resources/service-information",
+  "path": "services/fleet-resources/service-information",
+  "timestamp": "2026-10-18T02:38:34.290Z",
+  "title": "Service Information | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards"
+  ]
+}

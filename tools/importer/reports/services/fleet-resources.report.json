@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/fleet-resources",
+  "path": "services/fleet-resources",
+  "timestamp": "2026-10-18T02:38:06.122Z",
+  "title": "Fleet Resources | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

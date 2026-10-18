@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/partnerships/loves",
+  "path": "our-company/partnerships/loves",
+  "timestamp": "2026-10-18T02:18:54.517Z",
+  "title": "Love’s and International® Partnership | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "columns-media"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/series/rh",
+  "path": "products/trucks/series/rh",
+  "timestamp": "2026-10-18T02:36:05.222Z",
+  "title": "RH™ Series | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "cards-promo",
+    "carousel-cards",
+    "carousel-cards",
+    "carousel-cards",
+    "cards-overlay",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "carousel-hotspot",
+    "carousel-hotspot",
+    "cards-category",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs"
+  ]
+}

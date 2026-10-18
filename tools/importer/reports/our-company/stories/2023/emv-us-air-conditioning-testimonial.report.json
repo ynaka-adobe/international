@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2023/emv-us-air-conditioning-testimonial",
+  "path": "our-company/stories/2023/emv-us-air-conditioning-testimonial",
+  "timestamp": "2026-10-18T02:22:20.040Z",
+  "title": "eMV US Air Conditioning Testimonial | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster",
+    "quote-large-caps"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/private-and-general-freight",
+  "path": "industries/private-and-general-freight",
+  "timestamp": "2026-10-18T02:16:06.331Z",
+  "title": "Private and General Freight Solutions | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

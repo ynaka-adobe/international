@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/features/diamond-logic",
+  "path": "products/trucks/features/diamond-logic",
+  "timestamp": "2026-10-18T02:34:18.393Z",
+  "title": "Diamond Logic® | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "carousel-cards",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/us-air-conditioning",
+  "path": "our-company/stories/2025/us-air-conditioning",
+  "timestamp": "2026-10-18T02:28:36.107Z",
+  "title": "U.S. Air Conditioning | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

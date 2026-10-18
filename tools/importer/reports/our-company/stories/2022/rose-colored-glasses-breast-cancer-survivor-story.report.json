@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2022/rose-colored-glasses-breast-cancer-survivor-story",
+  "path": "our-company/stories/2022/rose-colored-glasses-breast-cancer-survivor-story",
+  "timestamp": "2026-10-18T02:20:47.708Z",
+  "title": "Rose-Colored Glasses: My Breast Cancer Survivor Story | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

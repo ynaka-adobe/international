@@ -1,0 +1,47 @@
+{
+  "variantName": "carousel-cards",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "card-slider",
+    "imagePattern": "medium",
+    "notes": "Light multi-card slider (~1.5-2.5 cards visible) with rounded image, eyebrow/title/text and optional link, orange progress bar, counter and small arrow buttons."
+  },
+  "contentPattern": {
+    "structure": "per card: image | optional eyebrow paragraph + heading (e.g. h5) + paragraph + optional CTA link",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "application / use-case card sliders",
+      "financing and services card sliders",
+      "any swipeable set of image + text cards"
+    ],
+    "notSuitableFor": [
+      "single full-width hero slides (use carousel-hero)",
+      "static card grids (use a cards block)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt",
+      "/our-company/stories/2023/supertruck-ii"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-18T01:01:40.438Z"
+  }
+}

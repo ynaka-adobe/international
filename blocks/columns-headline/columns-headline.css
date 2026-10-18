@@ -1,0 +1,52 @@
+/* columns-headline: structural layout (headline beside body copy + CTAs) */
+.columns-headline .columns-headline-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-headline .columns-headline-heading > * {
+  margin: 0;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  text-transform: uppercase;
+}
+
+.columns-headline .columns-headline-body > * {
+  margin: 0;
+}
+
+.columns-headline .columns-headline-body > * + * {
+  margin-top: 16px;
+}
+
+.columns-headline .columns-headline-body .columns-headline-footnote {
+  font-size: var(--body-font-size-xs);
+}
+
+.columns-headline .columns-headline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.columns-headline .columns-headline-actions .button-container {
+  display: block;
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .columns-headline .columns-headline-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+@media (width >= 1200px) {
+  .columns-headline .columns-headline-row {
+    gap: 80px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/real-world-testing-the-international-s13-integrated-powertrain",
+  "path": "our-company/stories/2024/real-world-testing-the-international-s13-integrated-powertrain",
+  "timestamp": "2026-10-18T02:25:26.063Z",
+  "title": "Real World Testing the International® S13® Integrated Powertrain | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-hero",
+    "carousel-cards",
+    "quote-large-caps",
+    "quote-large-caps",
+    "quote-large-caps",
+    "quote-large-caps",
+    "quote-large-caps",
+    "quote-large-caps"
+  ]
+}

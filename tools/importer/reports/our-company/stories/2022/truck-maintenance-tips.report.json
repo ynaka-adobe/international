@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2022/truck-maintenance-tips",
+  "path": "our-company/stories/2022/truck-maintenance-tips",
+  "timestamp": "2026-10-18T02:21:22.248Z",
+  "title": "Truck Maintenance Tips | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2022/school-busses-will-lead-the-charge-on-electrification",
+  "path": "our-company/stories/2022/school-busses-will-lead-the-charge-on-electrification",
+  "timestamp": "2026-10-18T02:21:05.617Z",
+  "title": "School Buses Will Lead The Charge on Electrification | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/testing-for-improved-truck-fuel-efficiency",
+  "path": "our-company/stories/2026/testing-for-improved-truck-fuel-efficiency",
+  "timestamp": "2026-10-18T02:30:27.652Z",
+  "title": "Testing for improved truck fuel efficiency | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster",
+    "video-poster",
+    "video-poster"
+  ]
+}

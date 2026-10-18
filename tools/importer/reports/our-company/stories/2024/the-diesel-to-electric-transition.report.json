@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2024/the-diesel-to-electric-transition",
+  "path": "our-company/stories/2024/the-diesel-to-electric-transition",
+  "timestamp": "2026-10-18T02:25:48.304Z",
+  "title": "The Diesel to Electric Transition: International® Truck Helps Fleets Prepare | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster"
+  ]
+}

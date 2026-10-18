@@ -1,0 +1,48 @@
+{
+  "variantName": "video-poster",
+  "baseBlock": "video",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/our-company/stories/2023/supertruck-ii",
+    "originPage": "International SuperTruck II story page",
+    "blockPosition": "middle",
+    "sourceComponent": "Sitecore SXA \"video video-promo\""
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "normal",
+    "purpose": "media",
+    "imagePattern": "large",
+    "notes": "16:9 poster still with a large centered circular play button; the YouTube/Vimeo/file player replaces the poster only when the play button is clicked (no third-party scripts up front). Sits in the narrow article column."
+  },
+  "contentPattern": {
+    "structure": "one row, one cell: poster picture (optional) + link to the video URL (YouTube, Vimeo or .mp4/.webm). Link text other than the URL is used as the video title for the play button aria-label and iframe title; otherwise the poster alt text is used",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasDescription": false,
+    "hasCTA": false
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "click-to-play YouTube or Vimeo videos with a poster still",
+      "story/article page videos (Sitecore video video-promo component)",
+      "self-hosted mp4/webm videos with a poster"
+    ],
+    "notSuitableFor": [
+      "autoplaying background videos (use video with autoplay)",
+      "video carousels or galleries",
+      "videos opened in a modal"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/our-company/stories/2023/supertruck-ii"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

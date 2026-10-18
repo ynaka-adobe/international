@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/q4-financing-a-new-truck",
+  "path": "our-company/stories/2025/q4-financing-a-new-truck",
+  "timestamp": "2026-10-18T02:27:44.231Z",
+  "title": "Why is Q4 the smartest time to finance a new truck? | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "quote-large-caps"
+  ]
+}

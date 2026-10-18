@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/my-international/qrcode",
+  "path": "services/my-international/qrcode",
+  "timestamp": "2026-10-18T02:39:48.153Z",
+  "title": "QR Code | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media"
+  ]
+}

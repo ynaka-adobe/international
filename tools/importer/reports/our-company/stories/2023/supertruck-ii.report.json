@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2023/supertruck-ii",
+  "path": "our-company/stories/2023/supertruck-ii",
+  "timestamp": "2026-10-18T02:22:53.093Z",
+  "title": "SuperTruck II | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster",
+    "quote-large-caps"
+  ]
+}

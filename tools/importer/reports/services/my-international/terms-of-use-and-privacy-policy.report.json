@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/services/my-international/terms-of-use-and-privacy-policy",
+  "path": "services/my-international/terms-of-use-and-privacy-policy",
+  "timestamp": "2026-10-18T02:40:17.355Z",
+  "title": "Terms of Use and Privacy Policy | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "accordion"
+  ]
+}

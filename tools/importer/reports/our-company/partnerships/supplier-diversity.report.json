@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/partnerships/supplier-diversity",
+  "path": "our-company/partnerships/supplier-diversity",
+  "timestamp": "2026-10-18T02:19:01.724Z",
+  "title": "Supplier Diversity | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "accordion",
+    "accordion"
+  ]
+}

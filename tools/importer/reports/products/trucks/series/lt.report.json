@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/series/lt",
+  "path": "products/trucks/series/lt",
+  "timestamp": "2026-10-18T02:11:42.507Z",
+  "title": "LT® Series | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-cta-band",
+    "columns-headline",
+    "carousel-hero",
+    "cards-promo",
+    "carousel-cards",
+    "carousel-cards",
+    "cards-overlay",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "carousel-hotspot",
+    "cards-category",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs"
+  ]
+}

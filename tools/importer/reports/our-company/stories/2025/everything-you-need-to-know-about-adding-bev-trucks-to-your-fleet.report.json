@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/everything-you-need-to-know-about-adding-bev-trucks-to-your-fleet",
+  "path": "our-company/stories/2025/everything-you-need-to-know-about-adding-bev-trucks-to-your-fleet",
+  "timestamp": "2026-10-18T02:26:56.958Z",
+  "title": "Everything You Need to Know About Adding BEV Trucks to Your Fleet | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster",
+    "video-poster"
+  ]
+}

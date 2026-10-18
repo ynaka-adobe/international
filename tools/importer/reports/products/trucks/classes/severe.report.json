@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/classes/severe",
+  "path": "products/trucks/classes/severe",
+  "timestamp": "2026-10-18T02:34:02.831Z",
+  "title": "Severe-Duty Trucks | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-overlay",
+    "columns-media",
+    "columns-media"
+  ]
+}

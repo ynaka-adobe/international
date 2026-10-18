@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/people/dei",
+  "path": "our-company/people/dei",
+  "timestamp": "2026-10-18T02:19:09.886Z",
+  "title": "Diversity, Equity And Inclusion | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

@@ -38,9 +38,11 @@
   },
   "usage": {
     "pagesUsing": [
-      "/index"
+      "/index",
+      "/products/trucks/series/lt",
+      "/our-company"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-16T00:00:00.000Z"
+    "reuseCount": 3,
+    "lastUsed": "2026-10-18"
   }
 }

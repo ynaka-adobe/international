@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/dealer-network/recruitment/become-a-tech",
+  "path": "dealer-network/recruitment/become-a-tech",
+  "timestamp": "2026-10-18T02:12:28.604Z",
+  "title": "Technician Jobs | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "columns-media"
+  ]
+}

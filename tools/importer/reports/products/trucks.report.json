@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks",
+  "path": "products/trucks",
+  "timestamp": "2026-10-18T02:33:34.593Z",
+  "title": "Trucks | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "carousel-cards",
+    "cards-overlay",
+    "cards-overlay",
+    "cards-category"
+  ]
+}

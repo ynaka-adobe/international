@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/building-sustainable-mobility-through-digitalization",
+  "path": "our-company/stories/2025/building-sustainable-mobility-through-digitalization",
+  "timestamp": "2026-10-18T02:26:42.194Z",
+  "title": "Building sustainable mobility through digitalization | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

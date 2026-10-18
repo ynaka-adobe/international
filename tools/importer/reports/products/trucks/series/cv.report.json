@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/products/trucks/series/cv",
+  "path": "products/trucks/series/cv",
+  "timestamp": "2026-10-18T02:35:24.659Z",
+  "title": "CV™ Series | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "carousel-cards",
+    "carousel-cards",
+    "cards-overlay",
+    "carousel-hotspot",
+    "carousel-hotspot",
+    "cards-category",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs",
+    "accordion-specs"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "variantName": "columns-cta-band",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "cta-band",
+    "imagePattern": "none",
+    "notes": "Single-row light band with bold uppercase claim text spanning ~75% and a dark filled button right-aligned; no media."
+  },
+  "contentPattern": {
+    "structure": "one row: claim/statement text | CTA link (cell order is free; the links-only cell is the CTA)",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "claim or stat statement beside a single CTA",
+      "request-a-quote / contact bands"
+    ],
+    "notSuitableFor": [
+      "image + text rows (use columns-media)",
+      "headline beside long body copy (use columns-headline)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-18T00:00:00.000Z"
+  }
+}

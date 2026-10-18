@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/fr/products/trucks/classes/heavy",
+  "path": "fr/products/trucks/classes/heavy",
+  "timestamp": "2026-10-18T02:13:25.392Z",
+  "title": "Camions Poids Lourd | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-overlay",
+    "columns-media",
+    "columns-media"
+  ]
+}

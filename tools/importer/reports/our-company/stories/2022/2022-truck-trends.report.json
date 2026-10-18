@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2022/2022-truck-trends",
+  "path": "our-company/stories/2022/2022-truck-trends",
+  "timestamp": "2026-10-18T02:19:57.543Z",
+  "title": "2022 Truck Trends | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

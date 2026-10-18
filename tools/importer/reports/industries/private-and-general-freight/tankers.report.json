@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/industries/private-and-general-freight/tankers",
+  "path": "industries/private-and-general-freight/tankers",
+  "timestamp": "2026-10-18T02:16:31.421Z",
+  "title": "Tanker Vehicles | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

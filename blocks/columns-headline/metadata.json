@@ -1,0 +1,46 @@
+{
+  "variantName": "columns-headline",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.international.com/products/trucks/series/lt",
+    "originPage": "International LT Series product page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "intro",
+    "imagePattern": "none",
+    "notes": "Text-only 50/50 split: large uppercase headline left; body copy, footnote and two buttons (filled + outlined) right."
+  },
+  "contentPattern": {
+    "structure": "one row: headline (h2) | body paragraphs + optional footnote paragraph starting with '*' + CTA links (bold link = primary, italic link = secondary)",
+    "buttonCount": 2,
+    "imageCount": 0,
+    "hasDescription": true,
+    "hasCTA": true
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": {
+    "suitableFor": [
+      "page intro with headline beside body copy",
+      "product overview with primary/secondary CTAs"
+    ],
+    "notSuitableFor": [
+      "image + text rows (use columns-media)",
+      "short claim + single button bands (use columns-cta-band)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/products/trucks/series/lt",
+      "/our-company"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-18"
+  }
+}

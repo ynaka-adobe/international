@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/vision-and-strategy/sustainability/social-impact",
+  "path": "our-company/vision-and-strategy/sustainability/social-impact",
+  "timestamp": "2026-10-18T02:31:23.009Z",
+  "title": "Social Impact | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "hero-banner",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "columns-headline",
+    "carousel-hero",
+    "carousel-hero",
+    "cards-promo",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "columns-media",
+    "accordion"
+  ]
+}

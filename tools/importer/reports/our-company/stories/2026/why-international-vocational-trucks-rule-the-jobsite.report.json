@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2026/why-international-vocational-trucks-rule-the-jobsite",
+  "path": "our-company/stories/2026/why-international-vocational-trucks-rule-the-jobsite",
+  "timestamp": "2026-10-18T02:30:42.711Z",
+  "title": "Why International vocational trucks rule the jobsite | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

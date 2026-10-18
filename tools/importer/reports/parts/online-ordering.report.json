@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/parts/online-ordering",
+  "path": "parts/online-ordering",
+  "timestamp": "2026-10-18T02:31:56.414Z",
+  "title": "Online Parts Ordering | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-promo",
+    "columns-media"
+  ]
+}

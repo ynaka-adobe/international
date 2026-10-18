@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2025/modernizing-an-american-legacy",
+  "path": "our-company/stories/2025/modernizing-an-american-legacy",
+  "timestamp": "2026-10-18T02:27:20.495Z",
+  "title": "Modernizing an American legacy | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/fr/products/trucks/classes/medium",
+  "path": "fr/products/trucks/classes/medium",
+  "timestamp": "2026-10-18T02:13:31.816Z",
+  "title": "Camions de Poids Moyen | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "columns-headline",
+    "cards-overlay",
+    "columns-media",
+    "columns-media",
+    "columns-media"
+  ]
+}

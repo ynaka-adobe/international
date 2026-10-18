@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.international.com/our-company/stories/2023/electric-vehicle-two-million-miles-driven",
+  "path": "our-company/stories/2023/electric-vehicle-two-million-miles-driven",
+  "timestamp": "2026-10-18T02:22:10.816Z",
+  "title": "Electric Truck Two Million Miles Driven | International®",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "carousel-cards"
+  ]
+}
