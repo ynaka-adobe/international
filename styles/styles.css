@@ -32,7 +32,6 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  font-size-adjust: from-font;
   line-height: var(--body-line-height);
 }
 
@@ -316,6 +315,11 @@ main > .section > .default-content-wrapper:has(> h2:only-child) {
   text-align: center;
 }
 
+/* centered-section title above a block (e.g. "EXPLORE MORE TRUCKS"): source keeps 64px on mobile too */
+main > .section:where(.centered) > .default-content-wrapper:has(> h2:only-child) {
+  margin-bottom: 64px;
+}
+
 /* intro heading + text (source page-preview): heading left, text and CTA right */
 main > .section > .default-content-wrapper:has(> h2:first-child + p) > h2 {
   font-weight: 500;
@@ -346,6 +350,349 @@ main > .section > .default-content-wrapper:has(> h2:first-child + p) > p > a.but
   main > .section > .default-content-wrapper:has(> h2:first-child + p) > p:has(> a.button) {
     margin-top: 24px;
   }
+}
+
+/* section titles (source h3/h4 component titles, e.g. "THE CABS", "RESOURCES", "NEWS"):
+   headline face at 500, line-height 1, 64px to the content below */
+main > .section > .default-content-wrapper > :is(h3, h4):first-child {
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 64px;
+}
+
+main > .section > .default-content-wrapper > h3:first-child {
+  font-size: var(--section-title-font-size);
+}
+
+main > .section > .default-content-wrapper > h4:first-child {
+  font-size: var(--section-subtitle-font-size);
+  line-height: 1.15;
+}
+
+@media (width >= 1200px) {
+  main > .section > .default-content-wrapper > h4:first-child {
+    line-height: 1;
+  }
+}
+
+/* in-page anchor menu (section style "in-page-nav", source .in-page-nav): a white bar of
+   anchor links floating at the bottom-left of the viewport; it slides in once the reader
+   scrolls past its position in the page and slides out at the end of the page */
+main > .section.in-page-nav {
+  height: 0;
+  margin: 0;
+  view-timeline: --in-page-nav block;
+}
+
+main > .section.in-page-nav > div.default-content-wrapper {
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  left: 0;
+  z-index: 100;
+  max-width: none;
+  margin: 0;
+  padding: 2px var(--content-padding);
+  overflow-x: auto;
+  scrollbar-width: none;
+  pointer-events: none;
+}
+
+main > .section.in-page-nav > div.default-content-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+main > .section.in-page-nav ul {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  box-shadow: var(--floating-shadow);
+  list-style: none;
+  pointer-events: auto;
+}
+
+main > .section.in-page-nav li {
+  flex: none;
+}
+
+main > .section.in-page-nav > .default-content-wrapper li > a:any-link {
+  display: inline-flex;
+  padding: 10px 12px;
+  border-radius: 2px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+main > .section.in-page-nav > .default-content-wrapper li > a:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+main > .section.in-page-nav > .default-content-wrapper li > a:focus-visible {
+  outline-offset: -2px;
+}
+
+main > .section.in-page-nav > .default-content-wrapper li > a[aria-current],
+main > .section.in-page-nav > .default-content-wrapper li > a.active {
+  background-color: var(--active-tint-color);
+}
+
+@media (width >= 900px) {
+  main > .section.in-page-nav > div.default-content-wrapper {
+    right: auto;
+    bottom: 24px;
+    left: 40px;
+    max-width: calc(100% - 80px);
+    padding: 0;
+    border-radius: 4px;
+    box-shadow: var(--floating-shadow);
+  }
+
+  main > .section.in-page-nav ul {
+    box-shadow: none;
+  }
+
+  main > .section.in-page-nav > .default-content-wrapper li > a:any-link {
+    border-radius: 4px;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  main > .section.in-page-nav > div.default-content-wrapper {
+    animation: in-page-nav-show linear both, in-page-nav-hide linear both;
+    animation-timeline: --in-page-nav, scroll(root);
+    animation-range: cover 15% cover 25%, calc(100% - 320px) calc(100% - 200px);
+  }
+
+  main > .section.in-page-nav > div.default-content-wrapper:focus-within {
+    animation: none;
+  }
+}
+
+@keyframes in-page-nav-show {
+  from { transform: translateY(200%); }
+  to { transform: none; }
+}
+
+@keyframes in-page-nav-hide {
+  from { translate: none; }
+  to { translate: 0 200%; }
+}
+
+/* download / link lists: default-content lists whose items are a single link
+   (source .file-list and .link-list): divider rows, file or link icon, "Download" affordance */
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li {
+  border-bottom: 1px solid var(--divider-color);
+  transition: border-color 0.2s ease-in;
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li:hover {
+  border-bottom-color: var(--divider-hover-color);
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:any-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 20px 0 16px 40px;
+  color: inherit;
+  font-size: var(--body-font-size-m);
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:hover {
+  color: var(--link-hover-color);
+}
+
+/* icon: link glyph by default, PDF glyph for .pdf files (source svg paths), tinted via currentcolor */
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='21.414 4 18.586 4 13.007 9.579 14.421 10.993 20 5.414 26.586 12 21.007 17.579 22.421 18.993 28 13.414 28 10.586 21.414 4'/%3E%3Cpolygon points='12 26.586 5.414 20 10.993 14.421 9.579 13.007 4 18.586 4 21.414 10.586 28 13.414 28 18.993 22.421 17.579 21.007 12 26.586'/%3E%3Crect x='10.343' y='15' width='11.314' height='2' transform='translate(-6.627 16) rotate(-45)'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a[href*=".pdf"]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M20,28H4V4h8v8h10v-2.414l-7.586-7.586H4l-2,2v24l2,2h16l2-2v-4h-2v4ZM19.586,10h-5.586v-5.586l5.586,5.586Z'/%3E%3Cpath d='M11.283,15.004v6.996h1.399v-2.459h1.85c1.398,0,2.299-.869,2.299-2.269s-.9-2.269-2.299-2.269h-3.249ZM15.371,17.272c0,.66-.409.989-.939.989h-1.749v-1.979h1.749c.53,0,.939.33.939.989Z'/%3E%3Cpath d='M20.603,15.004h-2.659v6.996h2.659c1.919,0,3.238-1.35,3.238-3.498s-1.319-3.498-3.238-3.498ZM20.553,20.721h-1.21v-4.438h1.21c1.119,0,1.829.949,1.829,2.219s-.71,2.219-1.829,2.219Z'/%3E%3Cpolygon points='30 16.283 30 15.004 25.103 15.004 25.103 22 26.502 22 26.502 19.222 29.501 19.222 29.501 17.962 26.502 17.962 26.502 16.283 30 16.283'/%3E%3C/svg%3E");
+}
+
+main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a[href*=".pdf"]::after {
+  content: "Download";
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+@media (width >= 600px) {
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:any-link {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding-block: 20px;
+  }
+
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (width >= 900px) {
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:any-link {
+    padding: 24px 0 24px 48px;
+    line-height: 1.35;
+  }
+
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a::before {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* plain page links (source .link-list) are shorter rows than file downloads */
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:not([href*=".pdf"]):any-link {
+    padding-block: 16px;
+  }
+}
+
+@media (width >= 1200px) {
+  main > .section:not(.in-page-nav) > .default-content-wrapper > ul:has(> li > a):not(:has(> li > :not(a:only-child))) > li > a:any-link {
+    font-size: 18px;
+  }
+}
+
+/* story articles (body.story, set in scripts.js for /our-company/stories/*): the text,
+   images and video sit in a narrow centered column (source blog layout); the hero,
+   quote and "other articles" carousel stay full width */
+body.story {
+  --story-column-width: 100%;
+}
+
+body.story main > .section:not(.hero-banner-container, .carousel-cards-container) > :is(.default-content-wrapper, .video-poster-wrapper) {
+  max-width: calc(var(--story-column-width) + 2 * var(--content-padding));
+}
+
+body.story main > .section.hero-banner-container:first-child {
+  margin-bottom: 64px;
+}
+
+body.story main > .section.quote-large-caps-container {
+  margin-bottom: 84px;
+}
+
+body.story main > .section:where(:not(.hero-banner-container, .carousel-cards-container)) > .default-content-wrapper {
+  margin-bottom: 64px;
+}
+
+body.story main > .section:where(:not(.hero-banner-container, .carousel-cards-container)) > .default-content-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+body.story main > .section:where(:not(.hero-banner-container, .carousel-cards-container)) > .default-content-wrapper > p {
+  margin-bottom: 10px;
+}
+
+body.story main > .section > .video-poster-wrapper + .default-content-wrapper {
+  margin-top: 88px;
+}
+
+/* article body: heading, image, paragraphs (source .blog-promo is inset 12px in the column) */
+body.story main > .section:not(.hero-banner-container, .carousel-cards-container) > .default-content-wrapper:has(> h2) {
+  display: block;
+  padding-inline: calc(var(--content-padding) + 12px);
+}
+
+body.story main > .section > .default-content-wrapper:has(> h2) > h2 {
+  margin: 64px 0 24px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--story-heading-font-size);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+body.story main > .section > .default-content-wrapper:has(> h2) > :first-child {
+  margin-top: 0;
+}
+
+body.story main > .section > .default-content-wrapper:has(> h2) > p {
+  margin-bottom: 10px;
+  font-size: var(--story-body-font-size);
+  line-height: 1.5;
+}
+
+body.story main > .section > .default-content-wrapper:has(> h2) > p:has(> picture:only-child) {
+  margin-bottom: 24px;
+}
+
+body.story main > .section > .default-content-wrapper:has(> h2) > p > picture:only-child img {
+  display: block;
+  width: 100%;
+  min-height: 250px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+@media (width >= 600px) {
+  body.story {
+    --story-column-width: 560px;
+  }
+}
+
+@media (width >= 900px) {
+  body.story {
+    --story-column-width: 700px;
+  }
+}
+
+@media (width >= 1200px) {
+  body.story {
+    --story-column-width: min(50vw, 720px);
+  }
+
+  body.story main > .section > .default-content-wrapper:has(> h2) > h2 {
+    margin: 72px 0 32px;
+    line-height: 1.15;
+  }
+
+  body.story main > .section > .default-content-wrapper:has(> h2) > p:has(> picture:only-child) {
+    margin-bottom: 32px;
+  }
+
+  body.story main > .section > .default-content-wrapper:has(> h2) > p > picture:only-child img {
+    border-radius: 8px;
+  }
+}
+
+/* trailing centered title introducing the block below (e.g. governance "EXPLORE MORE") */
+main > .section > .default-content-wrapper:has(> :is(ul, ol, p)) > h2:last-child:not(:first-child) {
+  margin-top: var(--section-spacing);
+  margin-bottom: 64px;
+  text-align: center;
 }
 
 /* accessibility utilities */
@@ -469,4 +816,33 @@ main .form form button[type="submit"] {
 
 main .form form button[type="submit"]:hover {
   color: var(--text-color);
+}
+
+/* FAQ-style sections (heading + accordion): heading in the left half, questions in the right */
+@media (width >= 900px) {
+  main > .section.accordion-container:has(> .default-content-wrapper:first-child + .accordion-wrapper:last-child) {
+    display: grid;
+    grid-template-columns:
+      1fr minmax(0, calc(var(--content-max-width) / 2))
+      minmax(0, calc(var(--content-max-width) / 2)) 1fr;
+    align-items: start;
+  }
+
+  main > .section.accordion-container:has(> .default-content-wrapper:first-child + .accordion-wrapper:last-child) > .default-content-wrapper {
+    grid-column: 2;
+    max-width: none;
+    margin: 0;
+    padding-right: 32px;
+  }
+
+  main > .section.accordion-container:has(> .default-content-wrapper:first-child + .accordion-wrapper:last-child) > .default-content-wrapper > :last-child {
+    margin-bottom: 0;
+  }
+
+  main > .section.accordion-container:has(> .default-content-wrapper:first-child + .accordion-wrapper:last-child) > .accordion-wrapper {
+    grid-column: 3;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+  }
 }

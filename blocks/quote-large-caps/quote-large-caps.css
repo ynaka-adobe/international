@@ -1,32 +1,38 @@
-/* quote-large-caps: structural layout (centered uppercase pull quote) */
+/* quote-large-caps: centered uppercase pull quote (source: promo quote-promo) */
+
+/* source: 15px promo padding + 5px quote-container padding;
+   12px inline + section 20px content padding = 32px text inset */
 .quote-large-caps .quote-large-caps-figure {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 var(--content-padding);
+  margin: 0;
+  padding: 15px 12px 20px;
+  color: var(--text-color);
   text-align: center;
 }
 
+/* decorative opening quote mark: own 50px line above the quotation */
+.quote-large-caps .quote-large-caps-figure::before {
+  content: '\201C' / '';
+  display: block;
+  font-family: var(--body-font-family);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 50px;
+}
+
 .quote-large-caps .quote-large-caps-quotation {
-  margin: 0;
+  margin: 5px 0 40px;
   padding: 0;
-  color: var(--heading-color);
+  color: var(--text-color);
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-m);
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
-/* decorative opening quote mark above the quotation (empty alt text for AT) */
-.quote-large-caps .quote-large-caps-quotation::before {
-  content: '\201C' / '';
-  display: block;
-  font-family: var(--heading-font-family);
-  font-size: 3em;
-  line-height: 0.8;
-}
-
 .quote-large-caps .quote-large-caps-quotation > * {
   margin: 0;
+  font: inherit;
 }
 
 .quote-large-caps .quote-large-caps-quotation > * + * {
@@ -34,10 +40,12 @@
 }
 
 .quote-large-caps .quote-large-caps-attribution {
-  margin-top: 24px;
-  color: var(--border-color);
+  margin: 0;
+  color: rgb(130 129 125);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
@@ -45,24 +53,25 @@
   font-style: normal;
 }
 
-@media (width >= 600px) {
-  .quote-large-caps .quote-large-caps-quotation {
-    font-size: var(--heading-font-size-l);
-  }
-}
-
-@media (width >= 900px) {
-  .quote-large-caps .quote-large-caps-figure {
-    padding: 0 48px;
+@media (width >= 1200px) {
+  .quote-large-caps .quote-large-caps-figure::before {
+    font-size: 60px;
+    line-height: 60px;
   }
 
   .quote-large-caps .quote-large-caps-quotation {
     font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .quote-large-caps .quote-large-caps-attribution {
+    font-size: 13px;
   }
 }
 
-@media (width >= 1200px) {
-  .quote-large-caps .quote-large-caps-figure {
-    padding: 0 80px;
+/* source steps the quotation up to 36px on wide screens */
+@media (width >= 1320px) {
+  .quote-large-caps .quote-large-caps-quotation {
+    font-size: 36px;
   }
 }

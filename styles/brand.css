@@ -11,6 +11,10 @@
   --accent-color: #ff7144;
   --border-color: #5f5e5b;
   --hover-tint: rgb(0 0 0 / 8%);
+  --divider-color: #e8e8e8;
+  --divider-hover-color: #41413e;
+  --active-tint-color: #e8e8e8;
+  --floating-shadow: 0 2px 8px 0 rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 8%);
 
   /* fonts */
   --body-font-family: intltext, intltext-fallback, arial, sans-serif;
@@ -29,6 +33,14 @@
   --heading-font-size-m: 18px;
   --heading-font-size-s: 16px;
   --heading-font-size-xs: 14px;
+
+  /* default-content section titles (source h3/h4 component titles) */
+  --section-title-font-size: 20px;
+  --section-subtitle-font-size: 16px;
+
+  /* story article column (source blog promo) */
+  --story-heading-font-size: 16px;
+  --story-body-font-size: 14px;
 
   /* buttons */
   --button-font-size: 11px;
@@ -65,5 +77,20 @@
 
     /* spacing */
     --section-spacing: 120px;
+  }
+}
+
+@media (width >= 600px) {
+  :root {
+    --section-title-font-size: 30px;
+  }
+}
+
+@media (width >= 1200px) {
+  :root {
+    --section-title-font-size: 36px;
+    --section-subtitle-font-size: 30px;
+    --story-heading-font-size: 24px;
+    --story-body-font-size: 16px;
   }
 }

@@ -1,51 +1,92 @@
-/* columns-cta-band: structural layout (claim text beside a CTA) */
+/*
+ * columns-cta-band: claim text beside a CTA (source: section-title col-sm-10 + button-link col-sm-2).
+ * Button look, hover, focus ring and reduced motion come from the global a.button styles.
+ */
+
+/* mobile: stacked, full-width button */
 .columns-cta-band .columns-cta-band-row {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  margin: 0 -8px;
+}
+
+.columns-cta-band .columns-cta-band-text,
+.columns-cta-band .columns-cta-band-cta {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 12px 0;
+}
+
+.columns-cta-band .columns-cta-band-text {
+  padding: 0 8px;
 }
 
 .columns-cta-band .columns-cta-band-text > * {
   margin: 0;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.15;
+
 }
 
 .columns-cta-band .columns-cta-band-text > * + * {
   margin-top: 12px;
 }
 
-.columns-cta-band .columns-cta-band-text p {
-  color: var(--heading-color);
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-s);
-  font-weight: 500;
-  line-height: 1.2;
-  text-transform: uppercase;
+.columns-cta-band .columns-cta-band-text strong,
+.columns-cta-band .columns-cta-band-text b {
+  font-weight: inherit;
+}
+
+.columns-cta-band .columns-cta-band-cta {
+  display: block;
+  padding: 4px 8px;
+  text-align: center;
 }
 
 .columns-cta-band .columns-cta-band-cta > * {
   margin: 0;
 }
 
-@media (width >= 600px) {
+main .columns-cta-band .columns-cta-band-cta a.button:any-link {
+  width: 100%;
+}
+
+/* tablet+: claim (10/12) beside the CTA (2/12), top-aligned */
+@media (width >= 900px) {
   .columns-cta-band .columns-cta-band-row {
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    align-items: flex-start;
   }
 
   .columns-cta-band .columns-cta-band-text {
-    flex: 1 1 75%;
+    flex: 0 0 83.3333%;
   }
 
   .columns-cta-band .columns-cta-band-cta {
-    flex: 0 0 auto;
-    text-align: end;
+    flex: 0 0 16.6667%;
+  }
+
+  .columns-cta-band .columns-cta-band-text > * {
+    line-height: 1;
+  }
+
+  /* source keeps the 11px button text until 1200px */
+  main .columns-cta-band .columns-cta-band-cta a.button:any-link {
+    width: auto;
+    font-size: 11px;
   }
 }
 
-@media (width >= 900px) {
-  .columns-cta-band .columns-cta-band-row {
-    gap: 48px;
+/* desktop: 24px, stepping up to 30px on wide screens (source switches near 1310px) */
+@media (width >= 1200px) {
+  .columns-cta-band .columns-cta-band-text > * {
+    font-size: clamp(24px, 10vw - 102px, 30px);
+  }
+
+  main .columns-cta-band .columns-cta-band-cta a.button:any-link {
+    font-size: var(--button-font-size);
   }
 }

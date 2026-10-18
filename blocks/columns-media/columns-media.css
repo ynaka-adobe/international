@@ -1,4 +1,6 @@
-/* columns-media: values from source .individual-promo (horizontal image-left/right) */
+/* columns-media: values from source .individual-promo (horizontal image-left/right).
+ * Light (white section) and dark (.section.dark) promos share typography and
+ * spacing on the source; only colors differ, so text inherits the section color. */
 .columns-media {
   display: flex;
   flex-direction: column;
@@ -15,6 +17,7 @@
   order: 0;
 }
 
+/* source: 8px content padding + 8px empty category row above the title */
 .columns-media .columns-media-text {
   order: 1;
   display: flex;
@@ -26,6 +29,11 @@
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: var(--body-line-height);
+}
+
+/* source keeps an empty 20px CTA row when a promo has no link */
+.columns-media .columns-media-text:not(:has(.button-container)) {
+  padding-bottom: 28px;
 }
 
 .columns-media .columns-media-image picture {
@@ -45,9 +53,14 @@
   margin: 0 0 10px;
 }
 
-/* title + subtitle render as one two-weight headline */
+.columns-media .columns-media-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* title + optional subtitle render as one two-weight headline */
 .columns-media .columns-media-text h2 {
-  margin: 0;
+  margin: 0 0 12px;
+  color: inherit;
   font-family: var(--heading-font-family);
   font-size: 16px;
   font-weight: 500;
@@ -55,7 +68,11 @@
   text-transform: uppercase;
 }
 
-.columns-media .columns-media-text h2 + p:not(.button-container) {
+.columns-media .columns-media-text h2:has(+ .columns-media-subtitle) {
+  margin-bottom: 0;
+}
+
+.columns-media .columns-media-text .columns-media-subtitle {
   margin: 0 0 12px;
   font-family: var(--heading-font-family);
   font-size: 16px;
@@ -75,7 +92,7 @@
   list-style: disc;
 }
 
-.columns-media .columns-media-text > :has(+ .button-container) {
+.columns-media .columns-media-text > :has(+ .columns-media-ctas) {
   margin-bottom: 0;
 }
 
@@ -89,10 +106,17 @@
   color: var(--link-hover-color);
 }
 
-/* CTA: source renders EXPLORE as an underlined text link, not a filled button */
+/* CTA: source renders EXPLORE as underlined text links, side by side */
+.columns-media .columns-media-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 20px 0 0;
+}
+
 main .columns-media .columns-media-text .button-container {
   display: block;
-  margin: 20px 0 0;
+  margin: 0;
 }
 
 main .section .columns-media .columns-media-text a.button:any-link {
@@ -118,6 +142,11 @@ main .section .columns-media .columns-media-text a.button:focus-visible {
   color: var(--link-hover-color);
 }
 
+/* light (white) sections: source promo copy is pure black */
+main .section:not(.dark) .columns-media .columns-media-text {
+  color: var(--text-color);
+}
+
 @media (width >= 900px) {
   .columns-media .columns-media-row {
     flex-direction: row;
@@ -130,8 +159,13 @@ main .section .columns-media .columns-media-text a.button:focus-visible {
     order: unset;
   }
 
+  /* 12px empty category row above the title, as on the source */
   .columns-media .columns-media-text {
-    padding: 0 80px;
+    padding: 12px 80px 0;
+  }
+
+  .columns-media .columns-media-text:not(:has(.button-container)) {
+    padding-bottom: 32px;
   }
 
   .columns-media .columns-media-image img {
@@ -139,12 +173,12 @@ main .section .columns-media .columns-media-text a.button:focus-visible {
   }
 
   .columns-media .columns-media-text h2,
-  .columns-media .columns-media-text h2 + p:not(.button-container) {
+  .columns-media .columns-media-text .columns-media-subtitle {
     font-size: 30px;
     line-height: 30px;
   }
 
-  main .columns-media .columns-media-text .button-container {
+  .columns-media .columns-media-ctas {
     margin-top: 32px;
   }
 }

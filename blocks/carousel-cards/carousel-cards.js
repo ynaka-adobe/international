@@ -62,6 +62,19 @@ function currentIndex(track) {
   return Math.round(track.scrollLeft / step);
 }
 
+/*
+ * Like the source slider, cards run past the content edges to the viewport
+ * edges. The distances are measured (not 100vw) so the page never gains a
+ * horizontal scrollbar; CSS turns them into negative margins + padding.
+ */
+function setBleed(block) {
+  const rect = block.getBoundingClientRect();
+  if (!rect.width) return;
+  const viewport = document.documentElement.clientWidth;
+  block.style.setProperty('--carousel-cards-bleed-start', `${Math.max(0, Math.floor(rect.left))}px`);
+  block.style.setProperty('--carousel-cards-bleed-end', `${Math.max(0, Math.floor(viewport - rect.right))}px`);
+}
+
 function update(block) {
   const track = block.querySelector(`.${BLOCK}-track`);
   if (!track.clientWidth) return; // not laid out yet
@@ -133,8 +146,14 @@ function bindEvents(block) {
     });
   }, { passive: true });
 
-  // runs once the block gets layout (sections are hidden while loading) and on resize
-  new ResizeObserver(() => update(block)).observe(track);
+  // runs once the block gets layout (sections are hidden while loading) and on resize;
+  // body is observed too because the block keeps its max width on wide viewports
+  const observer = new ResizeObserver(() => {
+    setBleed(block);
+    update(block);
+  });
+  observer.observe(block);
+  observer.observe(document.body);
 }
 
 function createNavButton(direction, label, controls) {

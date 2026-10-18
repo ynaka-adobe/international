@@ -10,14 +10,25 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
  *       "85%, 58%"             (unlabelled = top, then left)
  *     content cell: title (heading or first paragraph) + paragraphs
  *
- * Behaviour: each "+" marker is a button that opens a popup with the
- * hotspot text (Escape or the close button closes it and returns focus).
- * A "Hotspots" switch shows/hides the markers. Prev/next buttons and a
- * counter step through the hotspots like a carousel (shown under the
- * image on small screens), and a polite live region announces changes.
+ * Behaviour (source: international.com .swiper-hotspot):
+ *   desktop - "+" markers over the image open a popup beside the marker
+ *             (Escape / close button / outside click close it and return
+ *             focus). A "Hotspots" switch shows or hides the markers.
+ *   mobile  - the hotspot texts become slides under the image with a
+ *             progress bar, a counter and prev/next buttons; only the
+ *             current slide's marker is shown on the image.
  */
 
 const BLOCK = 'carousel-hotspot';
+const DESKTOP = '(width >= 900px)';
+const POPUP_OFFSET = 8;
+const SVG_NS = 'http://www.w3.org/2000/svg';
+const ICONS = {
+  plus: '17 15 17 6 15 6 15 15 6 15 6 17 15 17 15 26 17 26 17 17 26 17 26 15 17 15',
+  close: '25 8.414 23.586 7 16 14.586 8.414 7 7 8.414 14.586 16 7 23.586 8.414 25 16 17.414 23.586 25 25 23.586 17.414 16 25 8.414',
+  prev: '21.414 24.586 12.828 16 21.414 7.414 20 6 10 16 20 26 21.414 24.586',
+  next: '10.586 24.586 19.172 16 10.586 7.414 12 6 22 16 12 26 10.586 24.586',
+};
 
 const clamp = (n) => Math.max(0, Math.min(100, n));
 
@@ -38,11 +49,23 @@ function isPositionCell(cell) {
   return text.length > 0 && text.length <= 40 && !!parsePosition(text);
 }
 
-function makeButton(className, label) {
+function icon(name) {
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 32 32');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  const polygon = document.createElementNS(SVG_NS, 'polygon');
+  polygon.setAttribute('points', ICONS[name]);
+  svg.append(polygon);
+  return svg;
+}
+
+function makeButton(className, label, iconName) {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = className;
   button.setAttribute('aria-label', label);
+  if (iconName) button.append(icon(iconName));
   return button;
 }
 
@@ -56,9 +79,15 @@ function buildStage(row) {
     const img = cell.querySelector('img');
     if (img && !media.querySelector('picture')) {
       const pic = img.closest('picture');
-      const optimized = createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '2000' }, { width: '900' }]);
+      // hotspot positions are measured on the authored rendition, so keep
+      // external (CDN-cropped) images as-is; only optimise same-origin media
+      const sameOrigin = new URL(img.src, window.location.href).origin === window.location.origin;
+      const picture = sameOrigin
+        ? createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '2000' }, { width: '900' }])
+        : pic || img;
+      if (!sameOrigin && !img.hasAttribute('loading')) img.loading = 'lazy';
       (pic || img).remove();
-      media.prepend(optimized);
+      media.prepend(picture);
     }
     const content = document.createElement('div');
     content.className = `${BLOCK}-header-content`;
@@ -82,10 +111,6 @@ function buildHotspot(row, idx, id) {
   popup.setAttribute('role', 'dialog');
   popup.tabIndex = -1;
   popup.hidden = true;
-  popup.style.setProperty('--hotspot-top', `${position.top}%`);
-  popup.style.setProperty('--hotspot-left', `${position.left}%`);
-  if (position.left > 60) popup.classList.add('align-end');
-  if (position.top > 50) popup.classList.add('align-top');
 
   const body = document.createElement('div');
   body.className = `${BLOCK}-popup-body`;
@@ -100,10 +125,10 @@ function buildHotspot(row, idx, id) {
     popup.setAttribute('aria-label', titleText);
   }
 
-  const close = makeButton(`${BLOCK}-close`, `Close ${titleText}`);
+  const close = makeButton(`${BLOCK}-close`, `Close ${titleText}`, 'close');
   popup.append(body, close);
 
-  const marker = makeButton(`${BLOCK}-marker`, titleText);
+  const marker = makeButton(`${BLOCK}-marker`, titleText, 'plus');
   marker.id = `${id}-marker-${idx}`;
   marker.setAttribute('aria-expanded', 'false');
   marker.setAttribute('aria-controls', popup.id);
@@ -112,6 +137,40 @@ function buildHotspot(row, idx, id) {
   marker.dataset.index = idx;
 
   return { marker, popup, titleText };
+}
+
+/* popper-like placement: top (centred), then bottom, left, right */
+function placePopup(popup, marker, frame) {
+  const fw = frame.clientWidth;
+  const fh = frame.clientHeight;
+  const fr = frame.getBoundingClientRect();
+  const mr = marker.getBoundingClientRect();
+  const m = {
+    x: mr.left - fr.left, y: mr.top - fr.top, w: mr.width, h: mr.height,
+  };
+  const pw = popup.offsetWidth;
+  const ph = popup.offsetHeight;
+  const cx = m.x + m.w / 2 - pw / 2;
+  const cy = m.y + m.h / 2 - ph / 2;
+  const options = [
+    ['top', cx, m.y - POPUP_OFFSET - ph],
+    ['bottom', cx, m.y + m.h + POPUP_OFFSET],
+    ['left', m.x - POPUP_OFFSET - pw, cy],
+    ['right', m.x + m.w + POPUP_OFFSET, cy],
+  ];
+  const fits = ([, x, y]) => x >= 0 && y >= 0 && x + pw <= fw && y + ph <= fh;
+  const [placement, x, y] = options.find(fits)
+    || options.find(([, , y0]) => y0 >= 0 && y0 + ph <= fh)
+    || options[0];
+  const left = Math.round(Math.max(0, Math.min(x, fw - pw)));
+  const top = Math.round(Math.max(0, Math.min(y, fh - ph)));
+  popup.dataset.placement = placement;
+  popup.style.left = `${left}px`;
+  popup.style.top = `${top}px`;
+  // arrow points at the marker centre
+  const vertical = placement === 'top' || placement === 'bottom';
+  const arrow = vertical ? m.x + m.w / 2 - left : m.y + m.h / 2 - top;
+  popup.style.setProperty('--arrow-offset', `${Math.round(arrow)}px`);
 }
 
 export default function decorate(block) {
@@ -139,11 +198,11 @@ export default function decorate(block) {
   });
   rows.forEach((row) => row.remove());
 
-  media.append(markerList, header);
+  media.append(markerList);
 
   const stage = document.createElement('div');
   stage.className = `${BLOCK}-stage`;
-  stage.append(media, details);
+  stage.append(media, header, details);
   block.append(stage);
 
   if (!hotspots.length) return;
@@ -156,7 +215,7 @@ export default function decorate(block) {
     block.setAttribute('aria-labelledby', heading.id);
   }
 
-  // hotspots switch
+  // hotspots switch (desktop)
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.className = `${BLOCK}-toggle`;
@@ -165,15 +224,23 @@ export default function decorate(block) {
   toggle.textContent = 'Hotspots';
   header.append(toggle);
 
-  // carousel-style stepping through the hotspots
+  // slide controls (mobile): progress, counter, prev/next
   const nav = document.createElement('div');
   nav.className = `${BLOCK}-navigation`;
-  const prev = makeButton(`${BLOCK}-prev`, 'Previous Hotspot');
-  const next = makeButton(`${BLOCK}-next`, 'Next Hotspot');
+  const progress = document.createElement('div');
+  progress.className = `${BLOCK}-progress`;
+  progress.setAttribute('aria-hidden', 'true');
+  const fill = document.createElement('span');
+  progress.append(fill);
   const count = document.createElement('p');
   count.className = `${BLOCK}-count`;
   count.setAttribute('aria-hidden', 'true');
-  nav.append(prev, count, next);
+  const arrows = document.createElement('div');
+  arrows.className = `${BLOCK}-arrows`;
+  const prev = makeButton(`${BLOCK}-prev`, 'Previous Hotspot', 'prev');
+  const next = makeButton(`${BLOCK}-next`, 'Next Hotspot', 'next');
+  arrows.append(prev, next);
+  nav.append(progress, count, arrows);
   details.append(nav);
 
   const live = document.createElement('div');
@@ -182,44 +249,52 @@ export default function decorate(block) {
   live.setAttribute('aria-atomic', 'true');
   block.append(live);
 
-  let active = -1;
+  const mq = window.matchMedia(DESKTOP);
+  let current = 0; // slide shown on mobile / popup shown on desktop
+  let open = false; // desktop popup open
 
   const render = () => {
+    const desktop = mq.matches;
     hotspots.forEach(({ marker, popup }, idx) => {
-      const isActive = idx === active;
-      popup.hidden = !isActive;
-      marker.setAttribute('aria-expanded', isActive);
-      marker.classList.toggle('active', isActive);
+      const isCurrent = idx === current;
+      const expanded = desktop && open && isCurrent;
+      popup.hidden = desktop ? !expanded : !isCurrent;
+      marker.setAttribute('aria-expanded', expanded);
+      marker.classList.toggle('active', desktop ? expanded : isCurrent);
+      if (expanded) placePopup(popup, marker, media);
     });
-    block.classList.toggle('has-active', active > -1);
-    count.textContent = active > -1 ? `${active + 1} / ${hotspots.length}` : `${hotspots.length} hotspots`;
+    block.classList.toggle('has-active', desktop && open);
+    count.textContent = `${current + 1} / ${hotspots.length}`;
+    fill.style.width = `${((current + 1) / hotspots.length) * 100}%`;
+    prev.disabled = current === 0;
+    next.disabled = current === hotspots.length - 1;
   };
 
-  const open = (idx, { focus = false, announce = true } = {}) => {
-    active = (idx + hotspots.length) % hotspots.length;
+  const show = (idx, { focus = false } = {}) => {
+    current = Math.max(0, Math.min(hotspots.length - 1, idx));
+    open = mq.matches;
     render();
-    if (announce) live.textContent = `Hotspot ${active + 1} of ${hotspots.length}: ${hotspots[active].titleText}`;
-    if (focus) hotspots[active].popup.focus();
+    live.textContent = `Hotspot ${current + 1} of ${hotspots.length}: ${hotspots[current].titleText}`;
+    if (focus && open) hotspots[current].popup.focus();
   };
 
   const close = ({ restoreFocus = false } = {}) => {
-    if (active < 0) return;
-    const { marker } = hotspots[active];
-    active = -1;
+    if (!open) return;
+    open = false;
     render();
-    if (restoreFocus) marker.focus();
+    if (restoreFocus) hotspots[current].marker.focus();
   };
 
   hotspots.forEach(({ marker, popup }, idx) => {
     marker.addEventListener('click', () => {
-      if (active === idx) close();
-      else open(idx, { focus: true });
+      if (open && current === idx) close();
+      else show(idx, { focus: true });
     });
     popup.querySelector(`.${BLOCK}-close`).addEventListener('click', () => close({ restoreFocus: true }));
   });
 
-  prev.addEventListener('click', () => open(active < 0 ? hotspots.length - 1 : active - 1));
-  next.addEventListener('click', () => open(active + 1));
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
 
   toggle.addEventListener('click', () => {
     const on = toggle.getAttribute('aria-checked') !== 'true';
@@ -229,17 +304,24 @@ export default function decorate(block) {
   });
 
   block.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && active > -1) {
+    if (e.key === 'Escape' && open) {
       e.preventDefault();
       close({ restoreFocus: true });
     }
   });
 
   document.addEventListener('click', (e) => {
-    if (active < 0) return;
-    if (e.target.closest(`.${BLOCK}-popup, .${BLOCK}-marker, .${BLOCK}-navigation`)) return;
+    if (!open) return;
+    if (e.target.closest(`.${BLOCK}-popup, .${BLOCK}-marker`)) return;
     close();
   });
+
+  // popups only exist on desktop; the open state is simply not rendered on mobile
+  mq.addEventListener('change', render);
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => { if (open) render(); }).observe(media);
+  }
 
   render();
 }

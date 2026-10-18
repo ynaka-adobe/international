@@ -63,10 +63,12 @@ function createPlayer(url, title) {
 }
 
 function getTitle(link, img) {
+  // EDS copies the link text into link.title, so a bare URL can show up in either
+  const looksLikeUrl = (value) => !value || /^(https?:)?\/\//i.test(value) || value === link.href;
   const text = link.textContent.trim();
-  const looksLikeUrl = !text || /^(https?:)?\/\//i.test(text) || text === link.href;
-  if (!looksLikeUrl) return text;
-  if (link.title) return link.title.trim();
+  if (!looksLikeUrl(text)) return text;
+  const linkTitle = (link.title || '').trim();
+  if (!looksLikeUrl(linkTitle)) return linkTitle;
   return img?.alt?.trim() || '';
 }
 

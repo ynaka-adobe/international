@@ -1,20 +1,35 @@
-/* accordion-specs: structural layout (thin-rule accordion with spec groups) */
+/* accordion-specs: spec-sheet accordion (values from international.com div.spec-list) */
 .accordion-specs {
-  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
 }
 
 .accordion-specs .accordion-specs-item {
-  border-bottom: 1px solid var(--border-color);
+  margin: 0;
 }
 
+/* panel header */
 .accordion-specs .accordion-specs-item-label {
   position: relative;
   display: block;
-  padding: 16px 40px 16px 0;
-  color: var(--heading-color);
-  font-weight: 700;
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid #cbcac8;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
   list-style: none;
   cursor: pointer;
+}
+
+.accordion-specs .accordion-specs-item-label:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.accordion-specs .accordion-specs-item[open] > .accordion-specs-item-label {
+  border-bottom: 0;
 }
 
 .accordion-specs .accordion-specs-item-label::-webkit-details-marker {
@@ -23,37 +38,28 @@
 
 .accordion-specs .accordion-specs-item-label > * {
   margin: 0;
-  font-size: inherit;
+  color: inherit;
+  font: inherit;
 }
 
-.accordion-specs .accordion-specs-item-label:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-}
-
-/* plus / minus icon */
-.accordion-specs .accordion-specs-item-label::before,
+/* plus / minus indicator (source SVGs) */
 .accordion-specs .accordion-specs-item-label::after {
   content: '';
   position: absolute;
-  top: 50%;
-  right: 8px;
-  width: 14px;
-  height: 2px;
-  background-color: currentcolor;
-  transition: transform 200ms ease;
+  top: 16px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 32 32'%3E%3Cpolygon points='17 15 17 6 15 6 15 15 6 15 6 17 15 17 15 26 17 26 17 17 26 17 26 15 17 15' fill='%23000'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-.accordion-specs .accordion-specs-item-label::after {
-  transform: rotate(90deg);
+.accordion-specs .accordion-specs-item[open] > .accordion-specs-item-label::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 32 32'%3E%3Crect x='6' y='15' width='20' height='2' fill='%23000'/%3E%3C/svg%3E");
 }
 
-.accordion-specs .accordion-specs-item[open] .accordion-specs-item-label::after {
-  transform: rotate(0deg);
-}
-
+/* panel body */
 .accordion-specs .accordion-specs-item-body {
-  padding: 0 0 24px;
+  margin-bottom: 16px;
 }
 
 .accordion-specs .accordion-specs-item-body p,
@@ -63,61 +69,111 @@
 }
 
 .accordion-specs .accordion-specs-specs {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  display: block;
+}
+
+/* spec group (label + values) */
+.accordion-specs .accordion-specs-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 16px;
+  line-height: 21.6px;
+}
+
+.accordion-specs .accordion-specs-spec:last-child {
+  border-bottom: 0;
 }
 
 .accordion-specs .accordion-specs-spec-label > * {
   margin: 0;
-  color: var(--heading-color);
-  font-size: var(--body-font-size-m);
-  font-weight: 700;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21.6px;
+}
+
+.accordion-specs .accordion-specs-spec-label strong,
+.accordion-specs .accordion-specs-spec-label b {
+  font-weight: inherit;
 }
 
 .accordion-specs .accordion-specs-spec-data {
-  margin-top: 8px;
-}
-
-.accordion-specs .accordion-specs-spec-data > * + * {
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
 }
 
 .accordion-specs .accordion-specs-spec-data .accordion-specs-sub-label {
-  margin-top: 12px;
+  margin-bottom: 16px;
   font-weight: 500;
 }
 
-.accordion-specs .accordion-specs-spec-data .accordion-specs-sub-label:first-child {
-  margin-top: 0;
+.accordion-specs .accordion-specs-sub-label em,
+.accordion-specs .accordion-specs-sub-label i {
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .accordion-specs .accordion-specs-item-label::before,
-  .accordion-specs .accordion-specs-item-label::after {
-    transition: none;
-  }
-}
-
-@media (width >= 600px) {
-  .accordion-specs .accordion-specs-specs {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* value block after each sub-label ends with 16px (source .sub-spec-body) */
+.accordion-specs .accordion-specs-spec-data > :has(+ .accordion-specs-sub-label),
+.accordion-specs .accordion-specs-spec-data:has(.accordion-specs-sub-label) > :last-child {
+  margin-bottom: 16px;
 }
 
 @media (width >= 900px) {
-  .accordion-specs .accordion-specs-item-label {
-    padding: 24px 48px 24px 0;
+  .accordion-specs .accordion-specs-item-body {
+    margin-bottom: 0;
   }
 
-  .accordion-specs .accordion-specs-specs {
-    grid-template-columns: repeat(3, 1fr);
+  .accordion-specs .accordion-specs-spec {
+    flex-direction: row;
     gap: 32px;
+  }
+
+  .accordion-specs .accordion-specs-spec-label {
+    flex: 0 1 20%;
+  }
+
+  /* values: column 1 (300px), sub-label values: column 2 */
+  .accordion-specs .accordion-specs-spec-data {
+    display: grid;
+    flex: 0 1 80%;
+    grid-template-columns: 300px 1fr;
+    align-content: start;
+    margin-left: 0;
+  }
+
+  .accordion-specs .accordion-specs-spec-data > * {
+    box-sizing: border-box;
+    grid-column: 1;
+    padding-left: 32px;
+  }
+
+  .accordion-specs .accordion-specs-spec-data:has(.accordion-specs-sub-label) > :not(.accordion-specs-sub-label) {
+    grid-column: 2;
+  }
+
+  .accordion-specs .accordion-specs-spec-data .accordion-specs-sub-label {
+    margin-bottom: 0;
+  }
+
+  .accordion-specs .accordion-specs-spec-data > :has(+ .accordion-specs-sub-label),
+  .accordion-specs .accordion-specs-spec-data:has(.accordion-specs-sub-label) > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* a sub-label row is at least label + 16px tall (source .sub-spec-heading margin) */
+  .accordion-specs .accordion-specs-spec-data > .accordion-specs-sub-label + :is(:has(+ .accordion-specs-sub-label), :last-child) {
+    margin-bottom: 16px;
   }
 }
 
 @media (width >= 1200px) {
-  .accordion-specs .accordion-specs-specs {
-    grid-template-columns: repeat(4, 1fr);
+  .accordion-specs .accordion-specs-item-label::after {
+    width: 24px;
+    height: 24px;
   }
 }

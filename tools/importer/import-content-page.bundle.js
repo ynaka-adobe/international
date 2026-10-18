@@ -130,7 +130,8 @@ var CustomImportScript = (() => {
       content.push(p);
     });
     cells.push([content]);
-    const block = WebImporter.Blocks.createBlock(document, { name: "hero-banner", cells });
+    const name = element.closest("section.section-container") ? "hero-banner (contained)" : "hero-banner";
+    const block = WebImporter.Blocks.createBlock(document, { name, cells });
     element.replaceWith(block);
   }
 
@@ -1349,7 +1350,11 @@ var CustomImportScript = (() => {
     const heading2 = [...layout.children].find((c) => /^H[1-6]$/.test(c.tagName));
     if (heading2 && textOf15(heading2)) {
       const h = document.createElement(heading2.tagName.toLowerCase());
-      h.textContent = textOf15(heading2);
+      heading2.querySelectorAll("br").forEach((br) => br.replaceWith(document.createTextNode("\0")));
+      textOf15(heading2).split("\0").map((s) => s.trim()).filter(Boolean).forEach((part, i) => {
+        if (i) h.append(document.createElement("br"));
+        h.append(part);
+      });
       before.push(h);
     }
     const cells = [];

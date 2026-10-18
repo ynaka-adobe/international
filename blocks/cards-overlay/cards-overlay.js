@@ -1,5 +1,4 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { disambiguateLinks } from '../../scripts/scripts.js';
 
 /*
  * cards-overlay
@@ -7,7 +6,9 @@ import { disambiguateLinks } from '../../scripts/scripts.js';
  *   cell 1: card image
  *   cell 2: optional eyebrow paragraph (e.g. HEAVY DUTY), heading (e.g. h4),
  *           link (e.g. Explore) - the link makes the whole card clickable
- * Text is laid over the bottom of the image.
+ * Text is laid over the bottom of the image. As on the source, the whole card is
+ * one anchor (its accessible name is the eyebrow + title + link text); the authored
+ * link text becomes a span so it can keep its own hover colour.
  */
 
 const BLOCK = 'cards-overlay';
@@ -17,14 +18,20 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.className = `${BLOCK}-card`;
-    while (row.firstElementChild) li.append(row.firstElementChild);
+    const cells = [...row.children];
 
-    [...li.children].forEach((cell) => {
+    cells.forEach((cell) => {
       const img = cell.querySelector('img');
       if (img && cell.textContent.trim() === '') {
         cell.className = `${BLOCK}-card-image`;
-        const pic = img.closest('picture');
-        (pic || img).replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '1200' }, { width: '750' }]));
+        // only same-origin (media bus) images take EDS rendition params; external
+        // CDN images (imgix) keep their authored URL and its crop/size params
+        if (new URL(img.src, window.location.href).origin === window.location.origin) {
+          const pic = img.closest('picture');
+          (pic || img).replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '1200' }, { width: '750' }]));
+        } else {
+          img.loading = 'lazy';
+        }
         return;
       }
       cell.className = `${BLOCK}-card-body`;
@@ -36,14 +43,34 @@ export default function decorate(block) {
       }
     });
 
-    // the first link stretches over the whole card (see CSS ::after)
-    const link = li.querySelector(`.${BLOCK}-card-body a[href]`);
+    const link = row.querySelector(`.${BLOCK}-card-body a[href]`);
     if (link) {
-      link.classList.add(`${BLOCK}-link`);
-      li.classList.add(`${BLOCK}-linked`);
+      // the authored link becomes the card anchor; its text stays as the visible CTA
+      const anchor = document.createElement('a');
+      anchor.className = `${BLOCK}-card-link`;
+      anchor.href = link.href;
+      if (link.target) anchor.target = link.target;
+      if (link.rel) anchor.rel = link.rel;
+
+      const cta = document.createElement('span');
+      cta.className = `${BLOCK}-cta`;
+      cta.textContent = link.textContent.trim();
+      const wrapper = link.closest('p');
+      if (wrapper && wrapper.textContent.trim() === link.textContent.trim()) {
+        const p = document.createElement('p');
+        p.className = `${BLOCK}-cta-wrapper`;
+        p.append(cta);
+        wrapper.replaceWith(p);
+      } else {
+        link.replaceWith(cta);
+      }
+
+      anchor.append(...cells);
+      li.append(anchor);
+    } else {
+      li.append(...cells);
     }
     ul.append(li);
   });
   block.replaceChildren(ul);
-  disambiguateLinks(block, `.${BLOCK}-card`);
 }

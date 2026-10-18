@@ -1,4 +1,5 @@
-/* cards-overlay: structural layout (image cards with text overlaid bottom-left) */
+/* cards-overlay: linked image cards with eyebrow, title and CTA laid over the image
+   (source: .promo-list .promo-list-items.row-two-across) */
 .cards-overlay > ul {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,130 +7,155 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  text-align: start;
 }
 
 .cards-overlay .cards-overlay-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 320px;
-  border-radius: 8px;
-  overflow: hidden;
-  isolation: isolate;
-  color: #fff;
-  text-align: start;
+  min-width: 0;
 }
 
-/* image sits behind the in-flow body; the card is the stretched link's containing block */
+main .cards-overlay a.cards-overlay-card-link:any-link {
+  display: block;
+  position: relative;
+  height: 100%;
+  border-radius: 4px;
+  color: var(--background-color);
+  text-decoration: none;
+}
+
 .cards-overlay .cards-overlay-card-image {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: relative;
+  height: 100%;
 }
 
-.cards-overlay .cards-overlay-card-image picture,
+.cards-overlay .cards-overlay-card-image picture {
+  display: block;
+  height: 100%;
+}
+
 .cards-overlay .cards-overlay-card-image img {
   display: block;
   width: 100%;
   height: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
   object-fit: cover;
-  transition: transform 300ms ease;
 }
 
-/* dark gradient behind the overlaid text */
+/* 25% black scrim; the source drops it on mobile and on hover */
 .cards-overlay .cards-overlay-card-image::after {
-  content: '';
+  content: none;
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+  border-radius: 8px;
+  background-color: rgb(0 0 0 / 25%);
 }
 
 .cards-overlay .cards-overlay-card-body {
-  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px;
+  color: var(--background-color);
+  font-family: var(--body-font-family);
 }
 
 .cards-overlay .cards-overlay-card-body > * {
   margin: 0;
 }
 
-.cards-overlay .cards-overlay-card-body > * + * {
-  margin-top: 8px;
+.cards-overlay .cards-overlay-eyebrow {
+  color: var(--background-color);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .cards-overlay .cards-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
-  color: #fff;
+  margin-top: 12px;
+  color: var(--background-color);
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-m);
-  text-transform: uppercase;
+  font-size: var(--heading-font-size-s);
+  font-weight: 500;
+  line-height: 1.15;
 }
 
-.cards-overlay .cards-overlay-eyebrow {
-  font-size: var(--body-font-size-xs);
-  text-transform: uppercase;
+.cards-overlay .cards-overlay-card-body > :first-child {
+  margin-top: 0;
 }
 
-/* link reset: render as a white text link, not a button */
-main .cards-overlay a.cards-overlay-link:any-link {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: #fff;
+.cards-overlay .cards-overlay-card-body > .cards-overlay-cta-wrapper {
+  margin-top: 32px;
   font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.cards-overlay .cards-overlay-cta {
+  color: var(--background-color);
   text-decoration: underline;
   text-transform: uppercase;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease-in;
 }
 
-/* stretched link: the whole card is clickable */
-.cards-overlay a.cards-overlay-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-main .cards-overlay a.cards-overlay-link:hover,
-main .cards-overlay a.cards-overlay-link:focus-visible {
-  background: none;
-  color: var(--accent-color);
-}
-
-.cards-overlay .cards-overlay-linked:focus-within {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-}
-
-.cards-overlay .cards-overlay-linked:hover .cards-overlay-card-image img {
-  transform: scale(1.03);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cards-overlay .cards-overlay-card-image img {
-    transition: none;
-  }
-
-  .cards-overlay .cards-overlay-linked:hover .cards-overlay-card-image img {
-    transform: none;
-  }
+/* source: only the CTA text itself turns orange when pointed at */
+.cards-overlay .cards-overlay-cta:hover,
+.cards-overlay .cards-overlay-card-link:focus-visible .cards-overlay-cta {
+  color: var(--link-hover-color);
 }
 
 @media (width >= 600px) {
   .cards-overlay > ul {
     grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .cards-overlay .cards-overlay-card {
+    aspect-ratio: 3 / 2;
+  }
+
+  main .cards-overlay a.cards-overlay-card-link:any-link {
+    border-radius: 8px;
+  }
+
+  .cards-overlay .cards-overlay-card-image img {
+    aspect-ratio: auto;
+    border-radius: 8px;
+  }
+
+  .cards-overlay .cards-overlay-card-image::after {
+    content: '';
+  }
+
+  .cards-overlay .cards-overlay-card:hover .cards-overlay-card-image::after {
+    content: none;
+  }
+
+  .cards-overlay .cards-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
+    line-height: 1;
   }
 }
 
 @media (width >= 900px) {
-  .cards-overlay > ul {
-    gap: 24px;
-  }
-
-  .cards-overlay .cards-overlay-card {
-    min-height: 0;
-    aspect-ratio: 3 / 2;
-  }
-
   .cards-overlay .cards-overlay-card-body {
-    padding: 32px;
+    padding: 40px;
+  }
+
+  .cards-overlay .cards-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: 16px;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-overlay .cards-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 30px;
   }
 }
