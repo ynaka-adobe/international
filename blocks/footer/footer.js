@@ -1,11 +1,12 @@
 /**
- * Loads the footer fragment. Metadata-independent: /content first (local preview),
- * then the site root (DA/EDS publish).
+ * Loads the footer fragment. Metadata-independent: local preview serves content under
+ * /content, published sites serve it at the root; the other location is the fallback.
  * @returns {Promise<Element|null>} wrapper holding the fragment sections
  */
 async function loadFooterFragment() {
-  let resp = await fetch('/content/footer.plain.html');
-  if (!resp.ok) resp = await fetch('/footer.plain.html');
+  const local = window.location.pathname.startsWith('/content/');
+  let resp = await fetch(`${local ? '/content' : ''}/footer.plain.html`);
+  if (!resp.ok) resp = await fetch(`${local ? '' : '/content'}/footer.plain.html`);
   if (!resp.ok) return null;
   const wrapper = document.createElement('div');
   wrapper.innerHTML = await resp.text();

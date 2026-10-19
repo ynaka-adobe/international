@@ -19,10 +19,12 @@ import {
  */
 export async function loadFragment(path) {
   if (path) { //  && path.startsWith('/')
-    let resp = await fetch(`${path}.plain.html`);
     // local preview serves content under /content; published sites serve it at the root
-    if (!resp.ok && path.startsWith('/') && !path.startsWith('/content/')) {
-      resp = await fetch(`/content${path}.plain.html`);
+    const prefixable = path.startsWith('/') && !path.startsWith('/content/');
+    const local = prefixable && window.location.pathname.startsWith('/content/');
+    let resp = await fetch(`${local ? '/content' : ''}${path}.plain.html`);
+    if (!resp.ok && prefixable) {
+      resp = await fetch(`${local ? '' : '/content'}${path}.plain.html`);
     }
     if (resp.ok) {
       const main = document.createElement('main');
