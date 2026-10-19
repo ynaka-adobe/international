@@ -437,7 +437,8 @@ function extractFormDefinition(block) {
 export async function fetchForm(pathname) {
   // get the main form
   let data;
-  let path = pathname;
+  // Document Authoring rewrites links to sheets (form.json) as "form-json"; restore the extension
+  let path = pathname.replace(/-json(?=$|[?#])/, '.json');
   if (path.startsWith(window.location.origin) && !path.includes('.json')) {
     if (path.endsWith('.html')) {
       path = path.substring(0, path.lastIndexOf('.html'));

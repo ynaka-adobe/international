@@ -2,13 +2,14 @@
 const isDesktop = window.matchMedia('(width >= 1200px)');
 
 /**
- * Loads the nav fragment. Metadata-independent: /content first (local preview),
- * then the site root (DA/EDS publish).
+ * Loads the nav fragment. Metadata-independent: local preview serves content under
+ * /content, published sites serve it at the root; the other location is the fallback.
  * @returns {Promise<Element|null>} wrapper holding the fragment sections
  */
 async function loadNavFragment() {
-  let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
+  const local = window.location.pathname.startsWith('/content/');
+  let resp = await fetch(`${local ? '/content' : ''}/nav.plain.html`);
+  if (!resp.ok) resp = await fetch(`${local ? '' : '/content'}/nav.plain.html`);
   if (!resp.ok) return null;
   const wrapper = document.createElement('div');
   wrapper.innerHTML = await resp.text();
